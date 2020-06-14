@@ -6,9 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ssafy.happyhouse.dto.HouseDeal;
+import com.ssafy.happyhouse.dto.HouseInfo;
 import com.ssafy.happyhouse.dto.HousePageBean;
 import com.ssafy.happyhouse.dto.HouseScore;
 import com.ssafy.happyhouse.dto.TradeHub;
@@ -89,7 +92,13 @@ public class HouseController {
 		try {
 			deal = houseService.search(no);
 			deal.setDong(deal.getDong().trim());
+			
+//			HouseInfo info = houseService.searchHouseInfo(deal.getDong(), deal.getAptName());
+			
+//			System.out.println(info.toString());
+			
 			model.addAttribute("deal", deal);
+//			model.addAttribute("info", info);
 			
 		} catch(Exception e) {
 			model.addAttribute("msg", e.toString());
@@ -108,5 +117,12 @@ public class HouseController {
 		
 		
 		return "/house/houseInfo";
+	}
+	
+	@GetMapping("/info")
+	public @ResponseBody HouseInfo getHouseInfo(String dong, String aptname) {
+		HouseInfo info = houseService.searchHouseInfo(dong, aptname);
+		
+		return info;
 	}
 }

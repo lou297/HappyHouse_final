@@ -16,8 +16,8 @@ public class HouseInfo implements Serializable, Comparable<HouseInfo> {
 	/**지번*/
 	private String jibun;
 	/** */
-	private String lat;
-	private String lng;
+	private double lat;
+	private double lng;
 	
 	/**이미지 경로*/
 	protected String img;
@@ -69,16 +69,16 @@ public class HouseInfo implements Serializable, Comparable<HouseInfo> {
 		this.img = img;
 	}
 	
-	public String getLat() {
+	public double getLat() {
 		return lat;
 	}
-	public void setLat(String lat) {
+	public void setLat(double lat) {
 		this.lat = lat;
 	}
-	public String getLng() {
+	public double getLng() {
 		return lng;
 	}
-	public void setLng(String lng) {
+	public void setLng(double lng) {
 		this.lng = lng;
 	}
 	public int compareTo(HouseInfo o) {
@@ -90,8 +90,10 @@ public class HouseInfo implements Serializable, Comparable<HouseInfo> {
 	@Override
 	public String toString() {
 		return "HouseInfo [no=" + no + ", dong=" + dong + ", AptName=" + AptName + ", code=" + code + ", buildYear="
-				+ buildYear + ", jibun=" + jibun + ", img=" + img + "]";
+				+ buildYear + ", jibun=" + jibun + ", lat=" + lat + ", lng=" + lng + ", img=" + img + "]";
 	}
+
+	
 }
 
 

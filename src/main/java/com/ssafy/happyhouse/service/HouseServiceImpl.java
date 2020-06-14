@@ -248,6 +248,22 @@ public class HouseServiceImpl implements HouseService{
 		pageNavigation.makeNavigator();
 		return pageNavigation;
 	}
+	@Override
+	public HouseInfo searchHouseInfo(String dong, String aptname) {
+		// TODO Auto-generated method stub
+		
+		HouseInfo info = null;
+		
+		try {
+			info = infoDao.searchHouseInfo(dong, aptname);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return info;
+	}
+
+	
 	
 	
 }

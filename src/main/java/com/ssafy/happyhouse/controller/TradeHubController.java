@@ -6,7 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ssafy.happyhouse.dto.TradeHub;
 import com.ssafy.happyhouse.service.TradeHubService;
@@ -51,35 +54,49 @@ public class TradeHubController {
 		return "/tradehub/tradeHubList";
 	}
 	
-	@GetMapping("/dong")
-	public String findShopByDongName(String selected, Model model) {
-		List<String> dongNames = null;
+//	@GetMapping("/dong")
+//	public String findShopByDongName(String selected, Model model) {
+//		List<String> dongNames = null;
+//		try {
+//			dongNames = tradeHubService.showShopDongNames();
+//			model.addAttribute("dongNames", dongNames);
+//			
+//		} catch(Exception e) {
+//			model.addAttribute("msg", "동 명 로드 실패");
+//			return "/error.jsp";
+//		}
+//		
+//		try {
+//			List<TradeHub> shops;
+//			KMPFilter filter = new KMPFilter(tradeHubService.loadAllShops());
+//			
+//			if(selected == null) {
+//				shops = filter.getFilteredList(dongNames.get(0));
+//			}
+//			else {
+//				shops = filter.getFilteredList(selected);
+//				model.addAttribute("selected", selected);
+//			}
+//			model.addAttribute("shops", shops);
+//			
+//		} catch(Exception e) {
+//			model.addAttribute("msg", "업종 정보 로드 실패");
+//			return "/error.jsp";
+//		}
+//		return "/tradehub/tradeHubList";
+//	}
+//	
+	
+	@GetMapping("/dong/{dong}")
+	public @ResponseBody List<TradeHub> findShopByDongName(@PathVariable String dong) {
+		List<TradeHub> list = null;
 		try {
-			dongNames = tradeHubService.showShopDongNames();
-			model.addAttribute("dongNames", dongNames);
-			
-		} catch(Exception e) {
-			model.addAttribute("msg", "동 명 로드 실패");
-			return "/error.jsp";
+			list = tradeHubService.findShopByDongName(dong);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
-		try {
-			List<TradeHub> shops;
-			KMPFilter filter = new KMPFilter(tradeHubService.loadAllShops());
-			
-			if(selected == null) {
-				shops = filter.getFilteredList(dongNames.get(0));
-			}
-			else {
-				shops = filter.getFilteredList(selected);
-				model.addAttribute("selected", selected);
-			}
-			model.addAttribute("shops", shops);
-			
-		} catch(Exception e) {
-			model.addAttribute("msg", "업종 정보 로드 실패");
-			return "/error.jsp";
-		}
-		return "/tradehub/tradeHubList";
+		return list;
 	}
 }
