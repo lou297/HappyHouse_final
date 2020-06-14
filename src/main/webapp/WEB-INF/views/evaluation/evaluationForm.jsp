@@ -14,15 +14,27 @@
 <head>
 <meta charset="UTF-8">
 <title>도서 등록</title>
+
+
+<script type="text/javascript" src="${root }/resources/js/evaluationForm.js"></script>
+<link rel="stylesheet" type="text/css" href="${root }/resources/css/evaluationForm.css">
 <link href="${root}/resources/css/basic.css" rel="stylesheet"
 	type="text/css">
 <script type="text/javascript">
+	
+/*
 	window.onload = function() {
 		var btn = document.getElementById("btn1");
 		btn.addEventListener('click', function() {
 			var frm = document.getElementById("frm");
 			frm.submit();
 		})
+		
+		$('.starRev span').click(function(){
+			  $(this).parent().children('span').removeClass('on');
+			  $(this).addClass('on').prevAll('span').addClass('on');
+			  return false;
+			});
 	}
 
 	function getParam(sname) {
@@ -42,6 +54,7 @@
 		var no = getParam("no");
 		location.href = "${root}/house/detail?no=" + no;
 	}
+	*/
 </script>
 </head>
 <body>
@@ -68,28 +81,59 @@
 				<tr>
 					<td class="tbasic">교통편의</td>
 					<td class="tbasic">
-					<input type="text" size="40"
-						id="transportationConvenience" name="transportationConvenience" /></td>
+						<div class="starRevT">
+						  <span class="starR on">별1</span>
+						  <span class="starR">별2</span>
+						  <span class="starR">별3</span>
+						  <span class="starR">별4</span>
+						  <span class="starR">별5</span>
+	  					</div>
+					<input type="hidden"
+						id="transportationConvenience" name="transportationConvenience" value="1"/></td>
 				</tr>
 				<tr>
 					<td class="tbasic">방음</td>
-					<td class="tbasic"><input type="text" size="40"
-						id="soundProof" name="soundProof" /></td>
+					<td class="tbasic">
+						<div class="starRevS">
+						  <span class="starR on">별1</span>
+						  <span class="starR">별2</span>
+						  <span class="starR">별3</span>
+						  <span class="starR">별4</span>
+						  <span class="starR">별5</span>
+	  					</div>
+					<input type="hidden"
+						id="soundProof" name="soundProof" value="1"/></td>
 				</tr>
 				<tr>
 					<td class="tbasic">편의 시설</td>
-					<td class="tbasic"><input type="text" size="40"
-						id="convenientFacilities" name="convenientFacilities" /></td>
+					<td class="tbasic">
+						<div class="starRevC">
+						  <span class="starR on">별1</span>
+						  <span class="starR">별2</span>
+						  <span class="starR">별3</span>
+						  <span class="starR">별4</span>
+						  <span class="starR">별5</span>
+	  					</div>
+					<input type="hidden" size="40"
+						id="convenientFacilities" name="convenientFacilities" value="1"/></td>
 				</tr>
 				<tr>
 					<td class="tbasic">채광</td>
-					<td class="tbasic"><input type="text" size="40" id="lighting"
-						name="lighting" /></td>
+					<td class="tbasic">
+						<div class="starRevL">
+						  <span class="starR on">별1</span>
+						  <span class="starR">별2</span>
+						  <span class="starR">별3</span>
+						  <span class="starR">별4</span>
+						  <span class="starR">별5</span>
+	  					</div>
+					<input type="hidden" size="40" id="lighting"
+						name="lighting" value="1"/></td>
 				</tr>
 				<tr>
 					<td class="tbasic">총점</td>
-					<td class="tbasic"><input type="text" size="40" id="scoreAvg"
-						name="scoreAvg" /></td>
+					<td class="tbasic"><input type=text size="40" id="scoreAvg"
+						name="scoreAvg" readonly="readonly"/></td>
 				</tr>
 				<tr>
 					<td class="tbasic">코멘트</td>
