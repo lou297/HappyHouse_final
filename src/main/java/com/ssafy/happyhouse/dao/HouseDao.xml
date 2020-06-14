@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.ssafy.happyhouse.dao.HouseDao">
+
+	<!-- searchAll -->
+	<select id="searchAll" resultType="HouseDeal" parameterType="map">
+		select * from HouseDeal
+		where
+			type in 
+	        <foreach collection="searchType" item="item" index="index" separator="," open="(" close=")">
+	        	<if test="item == true">
+	                #{index} + 1
+	            </if>
+	        </foreach>
+	        
+			<if test="dong != null">
+				and ( dong like concat('%',#{dong},'%')
+			</if>
+			<if test="aptname != null">
+				or aptname like concat('%',#{aptname},'%') )
+			</if>
+		
+		limit #{currentPage}, #{sizePerPage}
+	</select>
+	
+	<select id="getTotalCount" resultType="Integer" parameterType="map">
+		select count(*) as count from HouseDeal
+		where
+			type in 
+	        <foreach collection="searchType" item="item" index="index" separator="," open="(" close=")">
+	        	<if test="item == true">
+	                #{index} + 1
+	            </if>
+	        </foreach>
+	        
+			<if test="dong != null">
+				and ( dong like concat('%',#{dong},'%')
+			</if>
+			<if test="aptname != null">
+				or aptname like concat('%',#{aptname},'%') )
+			</if>
+			
+	        
+	                
+	</select>
+	
+	<!-- search no -->
+	<select id="search"	  	resultType="HouseDeal">
+		select * from HouseDeal where no = #{no}
+	</select>
+	
+	<!-- addHouseDeal -->
+	<insert id="addHouseDeal"			parameterType="HouseDeal">
+		insert into HouseDeal (	no
+						  , dong
+						  , AptName
+						  , code
+					      , dealAmount
+						  , buildYear
+						  , dealYear
+						  , dealMonth
+						  , dealDay
+						  ,	area
+						  , floor
+						  , jibun
+						  , type
+						  , rentMoney) 
+		values (#{no}
+			  , #{dong}
+			  , #{AptName}
+			  , #{code}
+			  , #{dealAmount}
+			  , #{buildYear}
+			  , #{dealYear}
+			  , #{dealMonth}
+			  , #{dealDay}
+			  ,	#{area}
+			  , #{floor}
+			  , #{jibun}
+			  , #{type}
+			  , #{rentMoney})
+	</insert>
+	
+	<!-- searchByDong -->
+	<select id="searchByDong"			parameterType="string"  	resultType="HouseDeal">
+		select * from HouseDeal where dong like concat('%', #{dong},'%')
+	</select>
+	
+	<!-- searchByBuildYear -->
+	<select id="searchByBuildYear"			parameterType="Integer"  	resultType="HouseDeal">
+		select * from HouseDeal where buildYear = #{buildYear}
+	</select>
+	
+	<!-- searchByDealYear -->
+	<select id="searchByDealYear"			parameterType="Integer"  	resultType="HouseDeal">
+		select * from HouseDeal where dealYear = #{dealYear}
+	</select>
+	
+	<!-- searchByAreaScope -->
+	<select id="searchByAreaScope"			parameterType="string"  	resultType="HouseDeal">
+		select * from HouseDeal where area = #{area}
+	</select>
+	
+
+	
+</mapper>
+
+
+
+
+
+
+

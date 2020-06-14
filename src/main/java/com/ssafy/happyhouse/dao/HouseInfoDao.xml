@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.ssafy.happyhouse.dao.HouseInfoDao">
+
+	<!-- insertHouseInfo -->
+	<insert id="addHouseDeal"			parameterType="HouseInfo">
+		insert into houseinfo (	no
+						  , dong
+						  , AptName
+						  , code
+					      , buildYear
+						  , jibun
+						  , lat
+						  , lng) 
+		values (#{no}
+			  , #{dong}
+			  , #{AptName}
+			  , #{code}
+			  , #{buildYear}
+			  , #{jibun}
+			  , #{lat}
+			  , #{lng})
+	</insert>
+	
+	<!-- searchAllHouseInfo -->
+	<select id="searchAll" resultType="HouseInfo" >
+		select * from houseinfo
+	</select>
+	
+</mapper>
+
+
+
+
+
+
+

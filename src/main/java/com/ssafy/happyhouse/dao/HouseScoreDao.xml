@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.ssafy.happyhouse.dao.HouseScoreDao">
+	<!-- searchAll -->
+	<select id="searchHouseScores" resultType="HouseScore" parameterType="map">
+		select 	*
+		from house_score
+		<where>
+			<if test="houseno != null">
+				houseno = ${houseno}
+			</if>
+			<if test="contents != null">
+				dong like concat('%',#{contents},'%') or aptName like concat('%',#{contents},'%')
+			</if>
+		</where>
+		
+		order by
+		<choose>
+			<when test="order == 'DATE'">writeDate desc</when>
+			<when test="order == 'TRANS'">transportationConvenience desc</when>
+			<when test="order == 'SOUNDPROOT'">soundProof desc</when>
+			<when test="order == 'FACILITY'">convenientFacilities desc</when>
+			<when test="order == 'LIGHTING'">lighting desc</when>
+			<when test="order == 'AVG'">scoreAvg desc</when>
+		</choose>
+		
+		limit #{currentPage}, #{sizePerPage}
+	</select>
+	
+	<!-- search by dong -->
+	<select id="searchHouseScoresByDong" resultType="HouseScore">
+		select *
+		from house_score
+		where dong like concat('%',#{dong},'%')
+	</select>
+	
+	<!-- search by dong -->
+	<select id="searchHouseScoresByNo" resultType="HouseScore">
+		select *
+		from house_score
+		where houseno = #{houseno}
+	</select>
+	
+	<select id="getTotalCount" resultType="int" parameterType="map">
+		select 	count(*)
+		from house_score
+		<where>
+			<if test="houseno != null">
+				houseno = ${houseno}
+			</if>
+			<if test="contents != null">
+				and (dong like concat('%',#{contents},'%') or aptname like concat('%',#{contents},'%') )
+			</if>
+		</where>
+	</select>
+	
+	<delete id="removeHouseScore">
+		delete from house_score
+		where no = #{no}
+	</delete>
+	
+	<insert id="addHouseScore">
+		insert into house_score
+		(userId, houseNo, dong, aptName, transportationConvenience, soundProof, convenientFacilities, lighting, scoreAvg, comment)
+		values(#{userId}, #{houseNo}, #{dong}, #{aptName}, #{transportationConvenience}, #{soundProof}, #{convenientFacilities}, #{lighting}, #{scoreAvg}, #{comment});
+	</insert>
+
+</mapper>

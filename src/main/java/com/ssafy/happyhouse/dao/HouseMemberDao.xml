@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.ssafy.happyhouse.dao.HouseMemberDao">
+
+	<!-- insert -->
+	<insert id="insert"			parameterType="HouseMember">
+		insert into ssafy_member (
+						  	userid
+						  , userpwd
+						  , username
+					      , address
+						  , email
+						  ) 
+		values (#{userid}
+			  , #{userpwd}
+			  , #{username}
+			  , #{address}
+			  , #{email}
+			  )
+	</insert>
+
+	<!-- login -->
+	<select id="login" resultType="HouseMember">
+		select *
+		from   ssafy_member
+		where  userid = #{userid}
+		and	   userpwd = #{userpwd}
+	</select>
+
+	<!-- search -->
+	<select id="search"			parameterType="string"  	resultType="HouseMember">
+		select * from ssafy_member where userid = #{userid}
+	</select>
+	
+	<!-- searchAll -->
+	<select id="searchAll" resultType="HouseMember" >
+		select * from ssafy_member
+	</select>
+	
+	<!-- update -->
+	<update id="update"			parameterType="HouseMember">
+		update ssafy_member set
+			  	userpwd = #{userpwd}
+			  , username = #{username}
+			  , address = #{address}
+			  , email = #{email}
+		where 	userid= #{userid}
+	</update>
+	
+	<!-- delete -->
+	<delete id="delete"			parameterType="string">
+		delete from ssafy_member where userid= #{userid}
+	</delete>
+		
+	<!-- findPw -->
+	<select id="findPw" parameterType="string" resultType="string">
+		select password from ssafy_member where userid= #{userid} and username= #{username}
+	</select>
+	
+	
+</mapper>
+
+
+
+
+
+
+
