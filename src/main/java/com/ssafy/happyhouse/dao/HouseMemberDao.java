@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import com.ssafy.happyhouse.dto.HouseMember;
@@ -16,7 +17,7 @@ public interface HouseMemberDao {
 	public int insert(String userid, String userpwd, String username, String address, String email,Date joindate) throws SQLException;
 
 	// 로그인
-	public HouseMember login(String userid, String userpwd) throws SQLException;
+	public HouseMember login(@Param("userid")String userid,@Param("userpwd") String userpwd) throws SQLException;
 
 	// 회원 정보 조회
 	public HouseMember search(String userid) throws SQLException;

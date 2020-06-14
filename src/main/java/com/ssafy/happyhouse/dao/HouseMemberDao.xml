@@ -24,7 +24,7 @@
 	</insert>
 
 	<!-- login -->
-	<select id="login" resultType="HouseMember">
+	<select id="login" parameterType="map" resultType="HouseMember">
 		select *
 		from   ssafy_member
 		where  userid = #{userid}
