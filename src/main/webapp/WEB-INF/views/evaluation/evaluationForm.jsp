@@ -20,7 +20,6 @@
 	window.onload = function() {
 		var btn = document.getElementById("btn1");
 		btn.addEventListener('click', function() {
-			document.frm.no.value=getParam("no");
 			var frm = document.getElementById("frm");
 			frm.submit();
 		})
@@ -62,7 +61,7 @@
 		</thead>
 		<form id="frm" name="frm" method="post" action="${root}/score/evaluationForm">
 			<tbody>
-				<input type="hidden" name="no" value="" />
+				<input type="hidden" name="houseNo" value="${houseno }" />
 				<input type="hidden" name="dong" value="" />
 				<input type="hidden" name="aptName" value="" />
 		
