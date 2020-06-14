@@ -31,6 +31,12 @@
 		select * from houseinfo
 	</select>
 	
+	<select id="searchHouseInfo" resultType="HouseInfo" >
+		select * from houseinfo
+		where 	dong = #{dong}
+		and		aptname = #{aptname}
+	</select>
+	
 </mapper>
 
 

@@ -14,15 +14,31 @@
 
 <!-- 구글 차트 -->
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript"
+	src="http://maps.google.com/maps/api/js?key=AIzaSyCjA0YjA7wIVIwwsqyx8kj3qTbbUuA3ATg&sensor=true"></script>
+
 
 <script type="text/javascript">
 
 	google.charts.load('current', {'packages':['bar']});
   	google.charts.setOnLoadCallback(loadData);
 
-	//$(document).ready(function(){
-	//	loadData();
-	//});
+	$(document).ready(function(){
+		$.ajax({
+			type : "get",
+			url : "${root}/tradehub/dong/${deal.dong}",
+			success : function(shops) {
+				$.ajax({
+					type : "get",
+					url : "${root}/house/info?dong=${deal.dong}&aptname=${deal.aptName}",
+					success : function(info) {
+						mapInitialize(shops,info);
+					}
+				});
+				mapInitialize(shops);
+			}
+		});
+	});
 	
 	function loadData() {
 		var house;
@@ -139,7 +155,61 @@
 	    chart.draw(data, options);
 	}
 	
+	function mapInitialize(shops, info) {
+		
+		console.log(info);
+		
+		var myLatlng = new google.maps.LatLng(info.lat, info.lng); // 좌표값
+		var mapOptions = {
+			zoom : 16, // 지도 확대레벨 조정
+			center : myLatlng,
+			mapTypeId : google.maps.MapTypeId.ROADMAP
+		}
+		var map = new google.maps.Map(document.getElementById('map_canvas'),
+				mapOptions);
+		
+		/*
+		var marker = new google.maps.Marker({
+			position : myLatlng,
+			map : map,
+			title : "역삼 멀티캠퍼스" // 마커에 마우스를 올렸을때 간략하게 표기될 설명글
+		});
+		*/
+		
+		
+		
+		
+		for(var i = 0 ; i < shops.length; i++) {
+			var shop = shops[i];
+			var marker = new google.maps.Marker({
+				position : {lat : shop.latitude, lng : shop.longitude},
+				map : map,
+				title : "shop.shopName" // 마커에 마우스를 올렸을때 간략하게 표기될 설명글
+			});
+			
+		}
+	}
+
+	
 </script>
+<style>
+.embed-container {
+	position: relative;
+	padding-bottom: 15.25%;
+	height: 0;
+	overflow: hidden;
+	max-width: 100%;
+}
+
+.embed-container iframe, .embed-container object, .embed-container embed
+	{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 50%;
+	height: 50%;
+}
+</style>
 
 
 
@@ -187,8 +257,10 @@
 		<button type="button" class="btn btn-primary" onclick="location.href='${root}/score/main?houseno=${deal.no }&pg=1&order=DATE'">평가 상세보기</button>
 		
 		<div style="margin-top:100px">
+		
 		<h2 class="text-info">주변 상권 정보</h2>
-	
+		
+		<div id="map_canvas" class="embed-container"></div>
 		<c:choose>
 			<c:when test="${shops.size() ==0 }">
 				<h3 class="text-info">상권 정보가 없습니다.</h3>
@@ -198,37 +270,6 @@
 			<c:otherwise>
 				<c:forEach var="shop" items="${shops}">
 				
-				<%--
-				</br>
-				</br>
-		  		<table class = "table table-striped table-dark table-bordered">
-		  			<tbody align="center">
-			  			<tr>
-			  				<th>상호명</th>
-			  				<th>분류</th>
-			  				<th>층 정보</th>
-			  			</tr>
-			  			
-			  			<tr>
-			  				<td>${shop.shopName }</td>
-			  				<td>${shop.smallCategoryName }</td>
-			  				<td>${shop.floorInfo }</td>
-			  			</tr>
-			  			
-			  			<tr>
-			  				<th>도로명주소</th>
-			  				<th>위도</th>
-			  				<th>경도</th>
-			  			</tr>
-			  			
-			  			<tr>
-			  				<td>${shop.roadAddress }</td>
-			  				<td>${shop.longitude}</td>
-			  				<td>${shop.latitude }</td>
-			  			</tr>
-		  			</tbody>
-		  		</table>
-		  		 --%>
 		  		<div class="border-bottom" style="margin: 30px">
 		  			<h4>${shop.shopName }</h4>
 		  			<p>${shop.smallCategoryName }</p>

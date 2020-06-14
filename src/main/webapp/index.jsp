@@ -230,6 +230,16 @@ ul {
 		    </div>
 		    <!--/main slider carousel-->
 		</div>
+		
+		<div>
+			<iframe
+			    allow="microphone;"
+			    width="350"
+			    height="430"
+			    src="https://console.dialogflow.com/api-client/demo/embedded/24a624f5-3656-46df-adbd-59d0eb5aade4">
+			</iframe>
+      
+		</div>
 
 		
 		<!-- footer -->

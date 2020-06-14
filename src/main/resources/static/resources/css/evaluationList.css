@@ -10,3 +10,8 @@
   cursor: pointer;
 }
 .starR.on{background-position:0 0;}
+
+
+#comment {
+	font-size : 22px;
+}

@@ -67,7 +67,8 @@
 		
 				<tr>
 					<td class="tbasic">교통편의</td>
-					<td class="tbasic"><input type="text" size="40"
+					<td class="tbasic">
+					<input type="text" size="40"
 						id="transportationConvenience" name="transportationConvenience" /></td>
 				</tr>
 				<tr>

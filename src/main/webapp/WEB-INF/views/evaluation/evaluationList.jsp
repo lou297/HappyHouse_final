@@ -79,9 +79,9 @@
 				<c:forEach var="score" items="${scores}">
 						
 					<div class="justify-content-center border-bottom" align="left" style="margin-top:20px">
-						<h6>${score.dong }</h6>
+						<h6 class="text-danger">${score.dong }</h6>
 						<a href="${root }/house/detail?no=${score.houseNo}" style="font-size:20px">${score.aptName }</a> 
-						<p>교통 편의 : 
+						<p class="text-info">교통 편의 : 
 							<c:forEach var = "item" begin="1" end="5">
 								<c:if test="${item <= score.transportationConvenience }">
 									<span class="starR on">별</span>
@@ -91,7 +91,7 @@
 								</c:if>
 							</c:forEach>
 						</p>
-						<p>방음 : 
+						<p class="text-info">방음 : 
 							<c:forEach var = "item" begin="1" end="5">
 								<c:if test="${item <= score.soundProof }">
 									<span class="starR on">별</span>
@@ -101,7 +101,7 @@
 								</c:if>
 							</c:forEach>
 						</p>
-						<p>편의 시설 : 
+						<p class="text-info">편의 시설 : 
 							<c:forEach var = "item" begin="1" end="5">
 								<c:if test="${item <= score.convenientFacilities }">
 									<span class="starR on">별</span>
@@ -111,7 +111,7 @@
 								</c:if>
 							</c:forEach>
 						</p>
-						<p>채광 : 
+						<p class="text-info">채광 : 
 							<c:forEach var = "item" begin="1" end="5">
 								<c:if test="${item <= score.lighting }">
 									<span class="starR on">별</span>
@@ -121,7 +121,7 @@
 								</c:if>
 							</c:forEach>
 						</p>
-						<p>총점 : 
+						<p class="text-info">총점 : 
 							<c:forEach var = "item" begin="1" end="5">
 								<c:if test="${item <= score.scoreAvg }">
 									<span class="starR on">별</span>
@@ -131,7 +131,7 @@
 								</c:if>
 							</c:forEach>
 						</p>
-						<p>코멘트 : ${score.comment }</p>
+						<p id="comment">${score.comment }</p>
 					</div>
 			
 			
