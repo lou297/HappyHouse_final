@@ -160,6 +160,15 @@ public class HouseScore {
 		this.comment = comment;
 	}
 
+
+	@Override
+	public String toString() {
+		return "HouseScore [no=" + no + ", userId=" + userId + ", writeDate=" + writeDate + ", houseNo=" + houseNo
+				+ ", dong=" + dong + ", aptName=" + aptName + ", transportationConvenience=" + transportationConvenience
+				+ ", soundProof=" + soundProof + ", convenientFacilities=" + convenientFacilities + ", lighting="
+				+ lighting + ", scoreAvg=" + scoreAvg + ", comment=" + comment + "]";
+	}
+
 	
 	
 	

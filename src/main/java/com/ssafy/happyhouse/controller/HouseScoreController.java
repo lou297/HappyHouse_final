@@ -63,17 +63,18 @@ public class HouseScoreController {
 	}
 	
 	@PostMapping("/evaluationForm")
-	public String evaluationForm(HouseScore houseScore,HttpSession session) throws Exception {
+	public String evaluationForm(HouseScore houseScore,HttpSession session, Model model) throws Exception {
 		
 		HouseMember houseMember = (HouseMember) session.getAttribute("userinfo");
 		houseScore.setUserId(houseMember.getUserid()); // 아이디
 		
-		HouseDeal housedeal = houseService.search(houseScore.getNo());// 아파트정보
+		HouseDeal housedeal = houseService.search(houseScore.getHouseNo());// 아파트정보
 		houseScore.setAptName(housedeal.getAptName());
 		houseScore.setDong(housedeal.getDong());
-		
+		System.out.println(houseScore.toString());
 		service.addHouseScore(houseScore);
-		return "redirect:/evaluation/evaluationList";
+		
+		return "redirect:/score/main?pg=1&order=DATE";
 	}
 	
 	@GetMapping("/house")
