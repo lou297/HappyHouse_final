@@ -125,4 +125,5 @@ public class HouseController {
 		
 		return info;
 	}
+
 }
