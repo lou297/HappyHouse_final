@@ -27,7 +27,7 @@ public class UserController {
 	
 	@PostMapping("/register")
 	public String register(HouseMember houseMember, Model model) {
-		
+		System.out.println("레지스터");
 		try {
 			HouseMember hm = houseMemberService.insert(houseMember.getUserid(), houseMember.getUserpwd(), houseMember.getUsername(), houseMember.getAddress(), houseMember.getEmail(), houseMember.getJoindate());
 			

@@ -36,6 +36,8 @@
 					
 				<li class="nav-item"><a class="nav-link"
 					href="${root}/score/main?pg=1&order=DATE">아파트 평가</a></li>
+					<li class="nav-item"><a class="nav-link"
+					href="${root}/house/tradeHubBaseSearch">상권 기준</a></li>
 				<li class="nav-item"><a class="nav-link"
 					href="${root}/qnapage/main"> QnA 게시판</a></li>
 			</ul>

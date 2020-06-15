@@ -125,5 +125,11 @@ public class HouseController {
 		
 		return info;
 	}
+	
+	@GetMapping("/tradeHubBaseSearch")
+	public String rtradeHubBasePage() {
+		
+		return "/tradehubBaseSearch/tradeHubBaseSearch";
+	}
 
 }
