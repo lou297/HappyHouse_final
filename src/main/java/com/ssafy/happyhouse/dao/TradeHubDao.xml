@@ -20,7 +20,7 @@
 				road_address as roadAddress,
 				lng as longitude,
 				lat as latitude
-		from trade_hub where b_dong_name like concat('%',#{dongName},'%') limit 100
+		from trade_hub where b_dong_name like concat('%',#{dongName},'%')
 	</select>
 	
 	<!-- findShopByCategory -->
