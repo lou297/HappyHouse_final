@@ -8,6 +8,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <link rel="stylesheet" type="text/css" href="${root }/resources/css/evaluationList.css">
+
 <script type="text/javascript">
 	function pageMove(pg) { 
 		$("#pg").value=pg;

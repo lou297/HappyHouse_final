@@ -16,178 +16,57 @@
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript"
 	src="http://maps.google.com/maps/api/js?key=AIzaSyCjA0YjA7wIVIwwsqyx8kj3qTbbUuA3ATg&sensor=true"></script>
+<script type="text/javascript" src="${root }/resources/js/houseInfo.js"></script>
 
 
 <script type="text/javascript">
+google.charts.load('current', {
+	'packages' : [ 'bar' ]
+});
+google.charts.setOnLoadCallback(loadData);
 
-	google.charts.load('current', {'packages':['bar']});
-  	google.charts.setOnLoadCallback(loadData);
-
-	$(document).ready(function(){
-		$.ajax({
-			type : "get",
-			url : "${root}/tradehub/dong/${deal.dong}",
-			success : function(shops) {
-				$.ajax({
-					type : "get",
-					url : "${root}/house/info?dong=${deal.dong}&aptname=${deal.aptName}",
-					success : function(info) {
-						mapInitialize(shops,info);
-					}
-				});
-			}
-		});
+$(document).ready(function() {
+	$.ajax({
+		type : "get",
+		url : "${root}/tradehub/dong/${deal.dong}",
+		success : function(shops) {
+			$.ajax({
+				type : "get",
+				url : "${root}/house/info?dong=${deal.dong}&aptname=${deal.aptName}",
+				success : function(info) {
+					mapInitialize(shops, info);
+				}
+			});
+		}
 	});
 	
-	function loadData() {
-		var house;
-		var dong;
-		
-		$.ajax({
-			type : "get",
-			url : "${root}/score/dong?dong=${deal.dong}",
-			success : function(data) {
-				dong = data;
-				$.ajax({
-					type : "get",
-					url : "${root}/score/house?houseno=${deal.no}",
-					success : function(data) {
-						house = data;
-						calculData(dong, house);
-					}
-				});
-			}
-		});
-	}
 	
-	function calculData(dong, house) {
-		var dLength = dong.length;
-		
-		var dongAvg = {
-			transportationConvenience : 0,
-			soundProof : 0,
-			convenientFacilities : 0,
-			lighting : 0,
-			scoreAvg : 0
-		}
-		
-		dong.forEach(function(item) {
-			dongAvg.transportationConvenience += item.transportationConvenience;
-			dongAvg.soundProof += item.soundProof;
-			dongAvg.convenientFacilities += item.convenientFacilities;
-			dongAvg.lighting += item.lighting;
-			dongAvg.scoreAvg += item.scoreAvg;
-		});
-		
-		dongAvg.transportationConvenience = dongAvg.transportationConvenience/dLength;
-		dongAvg.soundProof = dongAvg.soundProof/dLength;
-		dongAvg.convenientFacilities = dongAvg.convenientFacilities/dLength;
-		dongAvg.lighting = dongAvg.lighting/dLength;
-		dongAvg.scoreAvg = dongAvg.scoreAvg/dLength;
-		
-	
-		
-		///////////////////////////////////////////////////////////////
-		var hLength = house.length;
-		
-		var houseAvg = {
-				transportationConvenience : 0,
-				soundProof : 0,
-				convenientFacilities : 0,
-				lighting : 0,
-				scoreAvg : 0
-			}
-			
-		house.forEach(function(item) {
-			houseAvg.transportationConvenience += item.transportationConvenience;
-			houseAvg.soundProof += item.soundProof;
-			houseAvg.convenientFacilities += item.convenientFacilities;
-			houseAvg.lighting += item.lighting;
-			houseAvg.scoreAvg += item.scoreAvg;
-		});
-			
-		houseAvg.transportationConvenience = houseAvg.transportationConvenience/hLength;
-		houseAvg.soundProof = houseAvg.soundProof/hLength;
-		houseAvg.convenientFacilities = houseAvg.convenientFacilities/hLength;
-		houseAvg.lighting = houseAvg.lighting/hLength;
-		houseAvg.scoreAvg = houseAvg.scoreAvg/hLength;
-		
-		//////////////////////////////////////////////
-      	
-		loadChart(dongAvg, houseAvg);
-	}
-	
-	function loadChart(dongAvg, houseAvg) {
-		
-		var dongA = dongAvg;
-		var houseA = houseAvg;
-		var data = new google.visualization.arrayToDataTable([
-	          ['기준', '해당 주택 평점', '해당 지역 주택 평균'],
-	          ['교통 편의', houseAvg.transportationConvenience, dongAvg.transportationConvenience],
-	          ['방음', houseAvg.soundProof, dongAvg.soundProof],
-	          ['편의 시설', houseAvg.convenientFacilities, dongAvg.convenientFacilities],
-	          ['채광', houseAvg.lighting, dongAvg.lighting],
-	          ['평가 평균', houseAvg.scoreAvg, dongAvg.scoreAvg]
-	        ]);
-		
-		console.log(data);
-		
-		var options = {
-		          width: 800,
-		          chart: {
-		            title: '주민 평가',
-		            subtitle: '해당 주택의 점수를 비교하세요'
-		          },
-		          bars: 'horizontal', // Required for Material Bar Charts.
-		          series: {
-		            0: { axis: 'score' }, // Bind series 0 to an axis named 'distance'.
-		          },
-		          axes: {
-		            x: {
-		              score: {label: '평점'}, // Bottom x-axis.
-		            }
-		          }
-		        };
-		
-		
-		var chart = new google.charts.Bar(document.getElementById('chart'));
-	    chart.draw(data, options);
-	}
-	
-	function mapInitialize(shops, info) {
-		
-		console.log(info);
-		
-		var myLatlng = new google.maps.LatLng(info.lat, info.lng); // 좌표값
-		var mapOptions = {
-			zoom : 16, // 지도 확대레벨 조정
-			center : myLatlng,
-			mapTypeId : google.maps.MapTypeId.ROADMAP
-		}
-		var map = new google.maps.Map(document.getElementById('map_canvas'),
-				mapOptions);
-		
-		/*
-		var marker = new google.maps.Marker({
-			position : myLatlng,
-			map : map,
-			title : "역삼 멀티캠퍼스" // 마커에 마우스를 올렸을때 간략하게 표기될 설명글
-		});
-		*/
-				
-		for(var i = 0 ; i < shops.length; i++) {
-			var shop = shops[i];
-			var marker = new google.maps.Marker({
-				position : {lat : shop.latitude, lng : shop.longitude},
-				map : map,
-				title : "shop.shopName" // 마커에 마우스를 올렸을때 간략하게 표기될 설명글
-			});
-			
-		}
-	}
+	$("#category").change(onRadioChange);
+});
+					
+function loadData() {
+	var house;
+	var dong;
 
-	
+	$.ajax({
+		type : "get",
+		url : "${root}/score/dong?dong=${deal.dong}",
+		success : function(data) {
+			dong = data;
+			$.ajax({
+				type : "get",
+				url : "${root}/score/house?houseno=${deal.no}",
+				success : function(data) {
+					house = data;
+					calculData(dong, house);
+				}
+			});
+		}
+	});
+}
+
 </script>
+
 <style>
 #map_canvas{
 	height: 400px;
@@ -262,6 +141,27 @@
 		<h2 class="text-info">주변 상권 정보</h2>
 		
 		<div id="map_canvas" class="embed-container"></div>
+		<div id="category_container">
+			<select	name = "category" id="category">
+				<option value="all">전체</option>
+				<option value="food">음식</option>
+				<option value="life">생활</option>
+				<option value="retail">소매</option>
+				<option value="medical">의료</option>
+				<option value="education">교육</option>
+				<option value="entertain">오락</option>
+				<option value="estate">부동산</option>
+				<option value="stay">숙박</option>
+				<option value="sports">스포츠</option>
+			</select>
+		</div>
+		
+		<div id="selected">
+			<h4 id="selected_shop_name"></h4>
+			<p id="selected_shop_category"></p>
+		  	<p id="selected_shop_address"></p>
+		  	<p id="selected_shop_floor"></p>
+		</div>
 		<c:choose>
 			<c:when test="${shops.size() ==0 }">
 				<h3 class="text-info">상권 정보가 없습니다.</h3>
