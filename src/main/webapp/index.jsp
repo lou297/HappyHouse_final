@@ -174,7 +174,7 @@ ul {
 						<div class="carousel-inner">
 							<div class="active carousel-item" data-slide-number="0">
 								<a
-									href="${root}/recommend/score/main?contents=&order=TRANS&pg=1">
+									href="${root}/score/main?contents=&order=TRANS&pg=1">
 									<img src="${root}/resources/img/trans.jpg" class="img-fluid">
 								</a>
 								<p>접근성</p>
