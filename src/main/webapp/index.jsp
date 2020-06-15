@@ -115,7 +115,7 @@ ul {
 
 		<c:set var="root" value="${pageContext.request.contextPath }" />
 
-		<div style="padding: 20px">
+		<div style="padding: 30px">
 			<p
 				style="font-size: 26px; font-family: sans-serif; font-weight: lighter; margin: 20px">
 				<span style="color: blue;">어떤 동네, 어떤 집</span>에서 <br>살고 싶으신가요?
@@ -250,7 +250,6 @@ ul {
 			<iframe allow="microphone;" width="350" height="430"
 				src="https://console.dialogflow.com/api-client/demo/embedded/24a624f5-3656-46df-adbd-59d0eb5aade4">
 			</iframe>
-
 		</div>
 
 
