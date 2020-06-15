@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import com.ssafy.happyhouse.dto.HouseInfo;
@@ -19,5 +20,5 @@ public interface HouseInfoDao {
 	/** HouseInfo DB에 위도 경도 입력하기 위해서 등록된 모든 집의 동과 지번을 추출한다. */
 	public List<HouseInfo> searchAllHouseInfo() throws SQLException;
 	
-	public HouseInfo searchHouseInfo(String dong, String aptname) throws SQLException;
+	public HouseInfo searchHouseInfo(@Param("dong")String dong, @Param("aptname")String aptname) throws SQLException;
 }

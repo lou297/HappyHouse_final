@@ -35,7 +35,6 @@
 						mapInitialize(shops,info);
 					}
 				});
-				mapInitialize(shops);
 			}
 		});
 	});
@@ -175,10 +174,7 @@
 			title : "역삼 멀티캠퍼스" // 마커에 마우스를 올렸을때 간략하게 표기될 설명글
 		});
 		*/
-		
-		
-		
-		
+				
 		for(var i = 0 ; i < shops.length; i++) {
 			var shop = shops[i];
 			var marker = new google.maps.Marker({
@@ -193,6 +189,11 @@
 	
 </script>
 <style>
+#map_canvas{
+	height: 400px;
+	width: 100%;	
+}
+
 .embed-container {
 	position: relative;
 	padding-bottom: 15.25%;

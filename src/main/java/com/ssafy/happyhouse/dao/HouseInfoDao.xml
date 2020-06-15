@@ -31,7 +31,7 @@
 		select * from houseinfo
 	</select>
 	
-	<select id="searchHouseInfo" resultType="HouseInfo" >
+	<select id="searchHouseInfo" parameterType="map" resultType="HouseInfo" >
 		select * from houseinfo
 		where 	dong = #{dong}
 		and		aptname = #{aptname}
