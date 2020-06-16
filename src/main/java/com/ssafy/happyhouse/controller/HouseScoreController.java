@@ -28,22 +28,39 @@ public class HouseScoreController {
 	HouseScoreService service;
 	@Autowired
 	private HouseService houseService;
-	
-	//특정 house에 대한 정보
+
+	// 특정 house에 대한 정보
 	@GetMapping("/main")
 	public String getHouseScores(String contents, String houseno, String order, int pg, String spp, Model model) {
+		switch (order) {
+		case "종합점수":
+			order = "AVG";
+			break;
+		case "접근성":
+			order = "TRANS";
+			break;
+		case "방음":
+			order = "SOUNDPROOT";
+			break;
+		case "편의시설":
+			order = "FACILITY";
+			break;
+		case "채광":
+			order = "LIGHTING";
+			break;
+		}
 		int sizePerPage = spp == null ? 10 : Integer.parseInt(spp);
-		
+
 		try {
-			
+
 			int total = service.getTotalCount(contents, houseno, order);
 			List<HouseScore> scores = service.searchHouseScores(pg, sizePerPage, contents, houseno, order);
 			PageNavigation navigation = service.makePageNavigation(pg, sizePerPage, contents, houseno, order);
-			
-			if(contents != null) {
+
+			if (contents != null) {
 				model.addAttribute("contents", contents);
 			}
-			
+
 			model.addAttribute("order", order);
 			model.addAttribute("total", total);
 			model.addAttribute("scores", scores);
@@ -51,57 +68,57 @@ public class HouseScoreController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return "evaluation/evaluationList";
 	}
-	
+
 	@GetMapping("/evaluation")
 	public String evaluate(String no, Model model) {
-		
-		model.addAttribute("houseno",no);
+
+		model.addAttribute("houseno", no);
 		return "evaluation/evaluationForm";
 	}
-	
+
 	@PostMapping("/evaluationForm")
-	public String evaluationForm(HouseScore houseScore,HttpSession session, Model model) throws Exception {
-		
+	public String evaluationForm(HouseScore houseScore, HttpSession session, Model model) throws Exception {
+
 		HouseMember houseMember = (HouseMember) session.getAttribute("userinfo");
 		houseScore.setUserId(houseMember.getUserid()); // 아이디
-		
+
 		HouseDeal housedeal = houseService.search(houseScore.getHouseNo());// 아파트정보
 		houseScore.setAptName(housedeal.getAptName());
 		houseScore.setDong(housedeal.getDong());
 		System.out.println(houseScore.toString());
 		service.addHouseScore(houseScore);
-		
+
 		return "redirect:/score/main?pg=1&order=DATE";
 	}
-	
+
 	@GetMapping("/house")
 	public @ResponseBody List<HouseScore> getHouseScoresByNo(int houseno) {
-		
+
 		List<HouseScore> list = null;
-		
+
 		try {
 			list = service.searchHouseScoresByNo(houseno);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return list;
 	}
-	
+
 	@GetMapping("/dong")
 	public @ResponseBody List<HouseScore> getHouseScoresByDong(String dong) {
-		
+
 		List<HouseScore> list = null;
-		
+
 		try {
 			list = service.searchHouseScoresByDong(dong);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return list;
 	}
 
