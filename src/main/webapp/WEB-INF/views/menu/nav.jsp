@@ -7,11 +7,22 @@
 <html>
 
 <%@ include file="../header/header.jsp"%>
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
 
+<style>
+p, span, li, button, a, input, h2, h3, option, select {
+	font-family: 'Do Hyeon', sans-serif;
+}
+
+.navbar-brand {
+	font-size : 35px;
+}
+
+</style>
 <body>
 	<c:set var="root" value="${pageContext.request.contextPath }" />
 
-	<nav class="navbar navbar-expand-md navbar-light bg-light">
+	<nav class="navbar navbar-expand-md navbar-dark bg-primary">
 		<a class="navbar-brand" href="${root}/index.jsp">HAPPY HOUSE</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarsExample04" aria-controls="navbarsExample04"

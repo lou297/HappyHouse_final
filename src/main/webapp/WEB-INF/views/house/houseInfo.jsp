@@ -18,7 +18,7 @@
 	src="http://maps.google.com/maps/api/js?key=AIzaSyCjA0YjA7wIVIwwsqyx8kj3qTbbUuA3ATg&sensor=true"></script>
 <script type="text/javascript" src="${root }/resources/js/houseInfo.js"></script>
 
-
+<link rel="stylesheet" type="text/css" href="${root }/resources/css/houseinfo.css">
 <script type="text/javascript">
 google.charts.load('current', {
 	'packages' : [ 'bar' ]
@@ -67,30 +67,6 @@ function loadData() {
 
 </script>
 
-<style>
-#map_canvas{
-	height: 400px;
-	width: 100%;	
-}
-
-.embed-container {
-	position: relative;
-	padding-bottom: 15.25%;
-	height: 0;
-	overflow: hidden;
-	max-width: 100%;
-}
-
-.embed-container iframe, .embed-container object, .embed-container embed
-	{
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 50%;
-	height: 50%;
-}
-</style>
-
 
 
 <body>
@@ -98,51 +74,59 @@ function loadData() {
 		<input type="hidden" name="dong" id="dong" value="${deal.dong }">
 		<input type="hidden" name="no" id="no" value="${deal.no }">
 	</div>
-	<div class="container" style="margin-top: 100px">
-		<img src="${root}/resources/img/${deal.img}"  class="img-thumbnail" style="width: 200px; height : 200px; float:left">
-		<div style="float:left; margin-left:50px; margin-top:20px" class="col-8">
-			<h5 class="text-primary"><b>${deal.dong } ${deal.aptName }</b></h5>
-			<table>
-				<tbody>
-					<tr>
-						<th>건설년도</th>
-			  			<th>거래일자</th>
-			  			<th>거래가</th>
-					</tr>
-					<tr>
-						<td><p>${deal.buildYear }</p></td>
-						<td><p>${deal.dealYear }.${deal.dealMonth }.${deal.dealDay }</p></td>
-						<td><p>${deal.dealAmount }</p></td>
-					</tr>
-					
-					<tr>
-			  			<th>면적</th>
-			  			<th>층</th>
-			  			<th>지번</th>
-			  		</tr>
-			  		<tr>
-			  			<td>${deal.area }</td>
-			  			<td>${deal.floor }</td>
-			  			<td>${deal.jibun }</td>
-			  		</tr>
-				</tbody>
-			</table>
+	<div class="container">
+		<div id="house_info_area">
+			<img src="${root}/resources/img/${deal.img}"  class="img-thumbnail" style="width: 350px; height : 300px; float:left">
+			<div style="float:left; margin-left:50px; margin-top:20px" class="col-6">
+				<p class="text-danger">${deal.dong }</p>
+				<h3 class="text-primary">${deal.aptName }</h3>
+				<p class="house_info_p"><span>거래일자: </span>${deal.dealYear }<span>년 </span>${deal.dealMonth }<span>월 </span>${deal.dealDay }<span>일</span></p>
+				<p class="house_info_p"><span>거래액: </span>${deal.dealAmount }<span> 만원</span></p>
+				<p class="house_info_p"><span>면적: </span>${deal.area }<span> m2</span></p>
+				<!-- 
+				<h5 class="text-primary"><b>${deal.dong } ${deal.aptName }</b></h5>
+				<table>
+					<tbody>
+						<tr>
+							<th>건설년도</th>
+				  			<th>거래일자</th>
+				  			<th>거래가</th>
+						</tr>
+						<tr>
+							<td><p>${deal.buildYear }</p></td>
+							<td><p>${deal.dealYear }.${deal.dealMonth }.${deal.dealDay }</p></td>
+							<td><p>${deal.dealAmount }</p></td>
+						</tr>
+						
+						<tr>
+				  			<th>면적</th>
+				  			<th>층</th>
+				  			<th>지번</th>
+				  		</tr>
+				  		<tr>
+				  			<td>${deal.area }</td>
+				  			<td>${deal.floor }</td>
+				  			<td>${deal.jibun }</td>
+				  		</tr>
+					</tbody>
+				</table>
+				
+				 -->
+			</div>
+			
+			<div style="clear : both"></div>
 		</div>
 		
-		<div style="clear : both"></div>
 		
-		<div style="margin-top:100px">
+		<p class="text-primary title_p">사용자 평가</p>
 		<div id="chart" style="width: 900px; height: 500px;"></div>
 		<button type="button" class="btn btn-primary" onclick="location.href='${root}/score/evaluation?no=${deal.no }'">평가 작성하기</button>
 		<button type="button" class="btn btn-primary" onclick="location.href='${root}/score/main?houseno=${deal.no }&pg=1&order=DATE'">평가 상세보기</button>
 		
-		<div style="margin-top:100px">
 		
-		<h2 class="text-info">주변 상권 정보</h2>
-		
-		<div id="map_canvas" class="embed-container"></div>
+		<p class="text-primary title_p">주변 상권 정보</p>
 		<div id="category_container">
-			<select	name = "category" id="category">
+			<select	name = "category" id="category" class="custom-select custom-select-sm col-1">
 				<option value="all">전체</option>
 				<option value="food">음식</option>
 				<option value="life">생활</option>
@@ -155,13 +139,17 @@ function loadData() {
 				<option value="sports">스포츠</option>
 			</select>
 		</div>
+		<div id="map_canvas" class="embed-container"></div>
+		
 		
 		<div id="selected">
-			<h4 id="selected_shop_name"></h4>
-			<p id="selected_shop_category"></p>
-		  	<p id="selected_shop_address"></p>
-		  	<p id="selected_shop_floor"></p>
+			<p>상호명 : <span id="selected_shop_name"></span></p>
+			<p>분류 : <span id="selected_shop_category"></span></p>
+			<p>도로명주소 : <span id="selected_shop_address"></span></p>
+			
 		</div>
+		
+		<!-- 
 		<c:choose>
 			<c:when test="${shops.size() ==0 }">
 				<h3 class="text-info">상권 정보가 없습니다.</h3>
@@ -179,6 +167,7 @@ function loadData() {
 		  		</c:forEach>
 			</c:otherwise>
 		</c:choose>
+		 -->
 	</div>
 	</div>
 	

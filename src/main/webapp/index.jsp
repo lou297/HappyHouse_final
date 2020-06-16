@@ -3,9 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
-<script type="text/javascript"
-	src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 
+
+<c:set var="root" value="${pageContext.request.contextPath }"></c:set>
 <!-- BootStrap search-->
 <link
 	href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
@@ -14,11 +14,12 @@
 	src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
+	
+<link rel="stylesheet" type="text/css" href="${root }/resources/css/index.css">
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
 <%@ include file="WEB-INF/views/header/header.jsp"%>
 <%@ include file="WEB-INF/views/menu/nav.jsp"%>
 
-<c:set var="root" value="${pageContext.request.contextPath }"></c:set>
 
 <script>
 	$(document).ready(function() {
@@ -33,92 +34,15 @@
 	}
 </script>
 
-
-<style>
-
-/* search  */
-.form-control-borderless {
-	border: none;
-}
-
-.form-control-borderless:hover, .form-control-borderless:active,
-	.form-control-borderless:focus {
-	border: none;
-	outline: none;
-	box-shadow: none;
-}
-
-/* thumbnail */
-#myCarousel .list-inline {
-	white-space: nowrap;
-	overflow-x: auto;
-}
-
-#myCarousel .carousel-indicators {
-	position: static;
-	left: initial;
-	width: initial;
-	margin-left: initial;
-}
-
-#myCarousel .carousel-indicators>li {
-	width: initial;
-	height: initial;
-	text-indent: initial;
-}
-
-#myCarousel .carousel-indicators>li.active img {
-	opacity: 0.7;
-}
-
-.search-container {
-	max-width: 50%;
-}
-
-.img-fluid {
-	padding-top: 10px;
-	max-width: 300px;
-}
-
-.img-fluid_list {
-	max-width: 100px;
-}
-
-.embed-container {
-	position: relative;
-	padding-bottom: 9.25%;
-	height: 0;
-	overflow: hidden;
-	max-width: 50%;
-}
-
-.embed-container iframe, .embed-container object, .embed-container embed
-	{
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 50%;
-	height: 50%;
-}
-
-.imgContent {
-	padding: 5px;
-}
-
-ul {
-	list-style: none;
-}
-</style>
-
 <body>
 	<div align="center">
 
 		<c:set var="root" value="${pageContext.request.contextPath }" />
 
-		<div style="padding: 30px">
+		<div style="padding: 30px" id="title_area">
 			<p
 				style="font-size: 26px; font-family: sans-serif; font-weight: lighter; margin: 20px">
-				<span style="color: blue;">어떤 동네, 어떤 집</span>에서 <br>살고 싶으신가요?
+				<span class="text-primary font-weight-bold">어떤 동네, 어떤 집</span>에서 <br>살고 싶으신가요?
 			</p>
 
 
@@ -129,47 +53,28 @@ ul {
 				crossorigin="anonymous">
 			<div class="search-container">
 				<br />
+				
 				<div class="row justify-content-center">
-					<div class="col-10 col-md-8 col-lg-6">
-						<form class="card card-sm">
-							<div class="card-body row no-gutters align-items-center">
-								<div class="col-auto">
-									<i class="fas fa-search h4 text-body"></i>
-								</div>
-								<!--end of col-->
-								<div class="col">
-									<input
-										class="form-control form-control-lg form-control-borderless"
-										type="search" id="search_word" name="search_word"
-										placeholder="방찾기">
-								</div>
-								<!--end of col-->
-								<div class="col-auto">
-									<button type="button" class="btn btn-lg btn-success"
-										onclick="javascript:pageMove_search();">Search</button>
-								</div>
-								<!--end of col-->
+						<div class="input-group col-10 col-md-8 col-lg-6">
+							<input type="search" class="form-control dropdown-toggle" placeholder="정보 찾기" id="search_word" name="search_word">
+							<span class="mdi mdi-magnify search-icon"></span>
+							<div class="input-group-append">
+								<button class="btn btn-primary" type="button" onclick="javascript:pageMove_search();">검색</button>
 							</div>
-						</form>
+						</div>
 					</div>
-					<!--end of col-->
-				</div>
 			</div>
 
 		</div>
 
-		<div style="padding: 20px; padding-bottom: 0px">
-			<p
-				style="text-align: center; font-family: sans-serif; font-weight: border; font-size: 20px;">
-				초간단 솔루션!</p>
-		</div>
+		
 
 		<!-- thumbnail -->
 		<div>
 			<div class="row min-vh-50 align-items-center"
 				style="margin: 25px; max-width: 50%">
 				<div class="col-lg-8 offset-lg-2" id="slider">
-					<div id="myCarousel" class="carousel slide shadow">
+					<div id="myCarousel" class="carousel slide shadow-sm">
 						<!-- main slider carousel items -->
 						<div class="carousel-inner">
 							<div class="active carousel-item" data-slide-number="0">
@@ -177,30 +82,30 @@ ul {
 									href="${root}/recommend/score/main?contents=&order=TRANS&pg=1">
 									<img src="${root}/resources/img/trans.jpg" class="img-fluid">
 								</a>
-								<p>접근성</p>
+								<p class="text-primary">접근성</p>
 							</div>
 							<div class="carousel-item" data-slide-number="1">
 								<a href="${root}/score/main?contents=&order=SOUNDPROOT&pg=1">
 									<img src="${root}/resources/img/sound.png" class="img-fluid">
 								</a>
-								<p>방음</p>
+								<p class="text-primary">방음</p>
 							</div>
 							<div class="carousel-item" data-slide-number="2">
 								<a href="${root}/score/main?contents=&order=FACILITY&pg=1">
 									<img src="${root}/resources/img/facility.jpg" class="img-fluid">
 								</a>
-								<p>편의시설</p>
+								<p class="text-primary">편의시설</p>
 							</div>
 							<div class="carousel-item" data-slide-number="3">
 								<a href="${root}/score/main?contents=&order=LIGHTING&pg=1">
 									<img src="${root}/resources/img/light.jpg" class="img-fluid">
 								</a>
-								<p>채광</p>
+								<p class="text-primary">채광</p>
 							</div>
 							<div class="carousel-item" data-slide-number="4">
 								<a href="${root}/score/main?contents=&order=AVG&pg=1"> <img
 									src="${root}/resources/img/avg.png" class="img-fluid"></a>
-								<p>평점</p>
+								<p class="text-primary">평점</p>
 							</div>
 
 
@@ -246,11 +151,15 @@ ul {
 			<!--/main slider carousel-->
 		</div>
 
-		<div>
-			<iframe allow="microphone;" width="350" height="430"
-				src="https://console.dialogflow.com/api-client/demo/embedded/24a624f5-3656-46df-adbd-59d0eb5aade4">
-			</iframe>
-		</div>
+
+	<!-- 
+		<iframe
+		    allow="microphone;"
+		    width="350"
+		    height="430"
+		    src="https://console.dialogflow.com/api-client/demo/embedded/17b1eb1d-3597-4332-ae16-0b79aa7375d5">
+		</iframe>
+      -->
 
 
 		<!-- footer -->
