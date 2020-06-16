@@ -3,7 +3,6 @@
 <!DOCTYPE html>
 <html>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ include file="../menu/nav.jsp"%>
 <head>
 <title>SSAFY</title>
 <meta charset="utf-8">
@@ -17,6 +16,7 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
 
+<%@ include file="../menu/nav.jsp"%>
 <c:set var="root" value="${pageContext.request.contextPath }" />
 <script type="text/javascript">
 	function requestFilteredHouses() {
