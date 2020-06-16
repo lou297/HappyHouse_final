@@ -155,8 +155,9 @@
 				</c:forEach>
 			</div>
 		
-		
-			${navigation.navigator}
+			<div>
+				${navigation.navigator}
+			</div>
 		</div>
 	</div>
 	

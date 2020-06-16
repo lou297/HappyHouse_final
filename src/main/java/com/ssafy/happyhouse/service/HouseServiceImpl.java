@@ -263,6 +263,11 @@ public class HouseServiceImpl implements HouseService{
 		}
 		return info;
 	}
+	@Override
+	public List<HouseInfo> searchHouseInfoList(String search) throws SQLException {
+		// TODO Auto-generated method stub
+		return infoDao.searchHouseInfoList(search);
+	}
 
 	
 	

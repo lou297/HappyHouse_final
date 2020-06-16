@@ -17,4 +17,6 @@ public interface TradeHubService {
 	public List<String> showShopDongNames() throws Exception;
 	
 	public List<TradeHub> loadAllShops() throws Exception;
+	
+	public List<TradeHub> findFilteredShops(String dong, String category) throws Exception;
 }
