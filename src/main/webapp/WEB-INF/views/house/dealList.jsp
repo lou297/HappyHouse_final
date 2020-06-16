@@ -308,7 +308,7 @@
 
 				</c:forEach>
 			</div>
-
+			
 			${navigation.navigator}
 
 		</div>
