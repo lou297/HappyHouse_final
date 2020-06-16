@@ -68,15 +68,16 @@
 							<button type="button" class="btn btn-primary" onclick="javascript:search();">검색</button>
 						</div>
 					</div>
+					<c:if test="${recommends eq null}">
+					<p style = "color: red; font-size : 22px; margin-bottom : 0px">지역과 카테고리를 입력해주세요.</p>
+				</c:if>
 			</div>
 			
 
 
 			<div id="searchResult">
 				
-				<c:if test="${recommends eq null}">
-					<p style = "color: red; font-size : 22px; margin-bottom : 0px">지역과 카테고리를 입력해주세요.</p>
-				</c:if>
+				
 				<c:if test="${cnt ne null}">
 					<p style = "color: red; font-size : 18px;" align="left">${search}의 (${category }) 상권 ${cnt }개에 대한 접근성 순위</p>
 				</c:if>
