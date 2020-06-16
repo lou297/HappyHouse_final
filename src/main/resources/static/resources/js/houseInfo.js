@@ -181,6 +181,7 @@ function setMarkers(category) {
 }
 
 function initMarkers() {
+	var image = "http://localhost:7070/happyhouse/resources/icon/education.png";
 	for (var i = 0; i < shoplist.length; i++) {
 		var shop = shoplist[i];
 		var marker = new google.maps.Marker({
@@ -189,7 +190,8 @@ function initMarkers() {
 				lng : shop.longitude
 			},
 			map : map,
-			title : shop.shopName // 마커에 마우스를 올렸을때 간략하게 표기될 설명글
+			title : shop.shopName, // 마커에 마우스를 올렸을때 간략하게 표기될 설명글
+			icon : image
 		});
 		markers.push(marker);
 		

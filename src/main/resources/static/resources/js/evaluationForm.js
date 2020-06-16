@@ -6,7 +6,7 @@ window.onload = function() {
 		var btn = document.getElementById("btn1");
 		btn.addEventListener('click', function() {
 			var frm = document.getElementById("frm");
-			
+			$("#houseNo").val($("#no").val());
 			getAvg();
 
 			frm.submit();

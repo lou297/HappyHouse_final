@@ -69,11 +69,6 @@
 			<tr>
 				<td colspan="2" class="bpadding">&nbsp;</td>
 			</tr>
-			<!-- 
-			<tr>
-				<td colspan="2" class="tbasic tspacial">&nbsp;</td>
-			</tr>
-			 -->
 		</thead>
 		<form id="frm" name="frm" method="post" action="${root}/score/evaluationForm">
 			<tbody>

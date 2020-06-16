@@ -120,7 +120,8 @@ function loadData() {
 		
 		<p class="text-primary title_p">사용자 평가</p>
 		<div id="chart" style="width: 900px; height: 500px;"></div>
-		<button type="button" class="btn btn-primary" onclick="location.href='${root}/score/evaluation?no=${deal.no }'">평가 작성하기</button>
+		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#evaluationFormModal">평가 작성하기</button>
+		<!-- <button type="button" class="btn btn-primary" onclick="location.href='${root}/score/evaluation?no=${deal.no }'">평가 작성하기</button>  -->
 		<button type="button" class="btn btn-primary" onclick="location.href='${root}/score/main?houseno=${deal.no }&pg=1&order=DATE'">평가 상세보기</button>
 		
 		
@@ -169,9 +170,8 @@ function loadData() {
 		</c:choose>
 		 -->
 	</div>
-	</div>
 	
-	
+	<%@ include file="../evaluation/evaluationFormModal.jsp" %>
 	
 	
 	

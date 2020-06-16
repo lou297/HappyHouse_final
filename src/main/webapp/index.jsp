@@ -24,7 +24,7 @@
 <script>
 	$(document).ready(function() {
 		$('#myCarousel').carousel({
-			interval : 10000
+			interval : 2000
 		})
 	});
 
@@ -42,7 +42,7 @@
 		<div style="padding: 30px" id="title_area">
 			<p
 				style="font-size: 26px; font-family: sans-serif; font-weight: lighter; margin: 20px">
-				<span class="text-primary font-weight-bold">어떤 동네, 어떤 집</span>에서 <br>살고 싶으신가요?
+				<span class="text-primary font-weight-bold" style="font-size : 30px">어떤 동네, 어떤 집</span>에서 <br>살고 싶으신가요?
 			</p>
 
 
@@ -72,7 +72,7 @@
 		<!-- thumbnail -->
 		<div>
 			<div class="row min-vh-50 align-items-center"
-				style="margin: 25px; max-width: 50%">
+				style="margin: 25px; max-width: 60%">
 				<div class="col-lg-8 offset-lg-2" id="slider">
 					<div id="myCarousel" class="carousel slide shadow-sm">
 						<!-- main slider carousel items -->
@@ -151,13 +151,17 @@
 			<!--/main slider carousel-->
 		</div>
 
-		<!-- dialogflow -->
+
+	<!-- dialogflow -->
 		<iframe
 		    allow="microphone;"
 		    width="350"
 		    height="430"
+		    src="https://console.dialogflow.com/api-client/demo/embedded/17b1eb1d-3597-4332-ae16-0b79aa7375d5">
 		    src="https://console.dialogflow.com/api-client/demo/embedded/c61d6723-8bf7-46d4-b3ac-1d1d39ea26bb">
 		</iframe>
+
+
 
 		<!-- footer -->
 		<footer>
