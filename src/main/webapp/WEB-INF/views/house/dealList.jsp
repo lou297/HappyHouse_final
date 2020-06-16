@@ -242,6 +242,13 @@
 					});//ready
 </script>
 
+<style>
+.pagination {
+	padding-top : 15px;
+    justify-content: center;
+}
+</style>
+
 
 <body>
 	<div class="container">

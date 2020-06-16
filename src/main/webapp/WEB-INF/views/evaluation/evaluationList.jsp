@@ -40,7 +40,12 @@
 		})
 	});
 </script>
-<<style>
+<style>
+
+.pagination {
+	padding-top : 15px;
+    justify-content: center;
+}
 .text-body1{
 	top: 0;
 	
@@ -59,7 +64,7 @@
 		
 			<div align="center">
 				<div id="title_area">
-					<h2 style="vertical-align : middle">평가 목록</h2>
+					<h2 >평가 목록</h2>
 				</div>
 				<div id="data">
 					<input type="hidden" name="order" id="order" value= "DATE">
@@ -103,20 +108,18 @@
 			<!-- 본문 -->
 			<div id="searchResult">
 				<c:if test="${total ne null}">
-					<p style = "color: red; font-size : 22px;" align="left">total : ${total }</p>
+					<p style = "color: red; font-size : 22px;" align="center">total : ${total }</p>
 				</c:if>
 					
 				<c:forEach var="score" items="${scores}">
 						
-					<div class="justify-content-center border-bottom" align="left" style="margin-top:20px">
-						<div class="text-body1">
+					<div class="justify-content-center border-bottom" align="left" style="margin-top:20px;display: flex">
+						<div class="text-body1" style="width: 50%; display: inline-block; order:1; ">
 							<h6 class="text-danger">${score.dong }</h6>
-							<a href="${root }/house/detail?no=${score.houseNo}" style="font-size:20px">${score.aptName }</a> 
-							<div style="padding: 10px">
+								<a href="${root }/house/detail?no=${score.houseNo}" style="font-size:20px">${score.aptName }</a>
 								<p id="comment">${score.comment }</p>
-							</div>
 						</div>
-						<div class="text-body2">
+						<div class="text-body2" style="display: inline-block;order:2;">
 							<p>
 								<span class="text-info">교통 편의 : </span>
 								<c:forEach var = "item" begin="1" end="5">
@@ -185,10 +188,9 @@
 			
 			
 				</c:forEach>
-			</div>
-		
-			<div>
-				${navigation.navigator}
+				<div style="text-align: center;">
+					${navigation.navigator}
+				</div>
 			</div>
 		</div>
 	</div>
