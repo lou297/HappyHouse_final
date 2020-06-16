@@ -3,9 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="root" value="${pageContext.request.contextPath }" />
 <!DOCTYPE html>
-<html>
+<%@ include file="../header/header.jsp"%>
 <%@ include file="../menu/nav.jsp"%>
-<head>
 <meta charset="UTF-8">
 <title>비밀번호 찾기</title>
 

@@ -4,8 +4,8 @@
 <c:set var="root" value="${pageContext.request.contextPath }" />
 <!DOCTYPE html>
 <html>
-<%@ include file="../menu/nav.jsp"%>
 <head>
+<%@ include file="../menu/nav.jsp"%>
 <meta charset="UTF-8">
 <title>회원 정보 수정</title>
 <script type="text/javascript">

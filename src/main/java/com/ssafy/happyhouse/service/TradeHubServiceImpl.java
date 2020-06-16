@@ -67,4 +67,11 @@ public class TradeHubServiceImpl implements TradeHubService{
 		return tradeHubDao.loadAllShops();
 	}
 
+
+	@Override
+	public List<TradeHub> findFilteredShops(String dong, String category) throws Exception {
+		// TODO Auto-generated method stub
+		return tradeHubDao.findFilteredShops(dong, category);
+	}
+
 }

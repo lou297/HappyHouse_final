@@ -33,6 +33,8 @@ public interface HouseService {
 	//모든 houseInfo 조회
 	public List<HouseInfo> searchAllHouseInfo();
 	
+	public List<HouseInfo> searchHouseInfoList(String search) throws SQLException ;
+	
 	public HouseInfo searchHouseInfo(String dong, String aptname);
 	
 	public HouseDeal addHouseDeal(String dong, String aptName, int code, String dealAmount, int buildYear, int dealYear, int dealMonth, int dealDay,
