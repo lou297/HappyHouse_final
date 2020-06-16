@@ -51,9 +51,9 @@ a {
 					 -->
 					
 				<li class="nav-item active" id="score_link"><a class="nav-link"
-					href="${root}/score/main?pg=1&order=DATE">아파트 평가</a></li>
+					href="${root}/score/main?pg=1&order=AVG">아파트 평가</a></li>
 					<li class="nav-item active" id="recommend_link"><a class="nav-link"
-					href="${root}/house/tradeHubBaseSearch?group=all&pg=1">상권 기준</a></li>
+					href="${root}/house/tradeHubBaseSearch?group=all&pg=1">아파트 추천</a></li>
 				<li class="nav-item active" id="qnd_link"><a class="nav-link"
 					href="${root}/qnapage/main"> QnA 게시판</a></li>
 			</ul>

@@ -11,7 +11,7 @@
 
 <script type="text/javascript">
 	function pageMove(pg) { 
-		$("#pg").value=pg;
+		$("#pg").val(pg);
 		requestFilteredScores();
 	}
 
@@ -24,6 +24,10 @@
 		else
 			location.href="${root}/score/main?contents=" + $("#contents").val() +"&order=" +$("#order").val() +"&pg="+$("#pg").val();
 
+	}
+	
+	function searchContents() {
+		location.href="${root}/score/main?contents=" + $("#contents").val() +"&order=AVG&pg=1";
 	}
 	
 	$(document).ready(function(){
@@ -50,41 +54,52 @@
 
 <body>
 
-	<div class="container" align="center">
+	<div class="container">
 		<div class="col-lg-12" style="margin-top : 100px">
-			<div id="title_area"">
-				<h2 style="vertical-align : middle">평가 목록</h2>
-			</div>
-			<div id="data">
-				<input type="hidden" name="order" id="order" value= "DATE">
-				<input type="hidden" name="houseno" id="houseno" value=-1>
-				<input type="hidden" name="pg" id="pg" value="1">
-				<input type="hidden" name="search" id="search" value="0">
-			</div>
-			
-			
-			<!-- 정렬 선택 -->
-			<select id="select_order" style="margin-top:50px">
-				<option value="DATE" <c:if test="${order eq 'DATE'}">selected="selected"</c:if> >최신 순</option>
-				<option value="AVG" <c:if test="${order eq 'AVG'}">selected="selected"</c:if> >통합 평균 순</option>
-				<option value="TRANS" <c:if test="${order eq 'TRANS'}">selected="selected"</c:if> >교통 편의 순</option>
-				<option value="SOUNDPROOT" <c:if test="${order eq 'SOUNDPROOT'}">selected="selected"</c:if> >방음 순</option>
-				<option value="FACILITY" <c:if test="${order eq 'FACILITY'}">selected="selected"</c:if> >편의시설 순</option>
-				<option value="LIGHTING" <c:if test="${order eq 'LIGHTING'}">selected="selected"</c:if> >채광 순</option>
-			</select>
-			
-			
-			<!-- 검색 창 -->
-			<div class="form-group input-group col-6" align="left">
-				<input type="text" class="form-control" id="contents" name="contents"
-					placeholder="" value="${contents}">
-				<div class="input-group-append">
-					<button type="button" class="btn btn-primary" onclick="javascript:requestFilteredScores();">검색</button>
+		
+			<div align="center">
+				<div id="title_area">
+					<h2 style="vertical-align : middle">평가 목록</h2>
 				</div>
+				<div id="data">
+					<input type="hidden" name="order" id="order" value= "DATE">
+					<input type="hidden" name="houseno" id="houseno" value=-1>
+					<input type="hidden" name="group" id="group" value="${group }">
+					<input type="hidden" name="pg" id="pg" value="${pg }">
+					<input type="hidden" name="search" id="search" value="0">
+				</div>
+				
+				
+				<!-- 정렬 선택 -->
+				<select id="select_order" style="margin-top:50px">
+					<option value="AVG" <c:if test="${order eq 'AVG'}">selected="selected"</c:if> >통합 평균 순</option>
+					<option value="TRANS" <c:if test="${order eq 'TRANS'}">selected="selected"</c:if> >교통 편의 순</option>
+					<option value="SOUNDPROOT" <c:if test="${order eq 'SOUNDPROOT'}">selected="selected"</c:if> >방음 순</option>
+					<option value="FACILITY" <c:if test="${order eq 'FACILITY'}">selected="selected"</c:if> >편의시설 순</option>
+					<option value="LIGHTING" <c:if test="${order eq 'LIGHTING'}">selected="selected"</c:if> >채광 순</option>
+					<option value="DATE" <c:if test="${order eq 'DATE'}">selected="selected"</c:if> >최신 순</option>
+				</select>
+				
+				
+				<!-- 검색 창 -->
+				<div class="form-group input-group col-6" align="left">
+					<input type="text" class="form-control" id="contents" name="contents"
+						placeholder="" value="${contents}">
+					<div class="input-group-append">
+						<button type="button" class="btn btn-primary" onclick="javascript:searchContents();">검색</button>
+					</div>
+				</div>
+	
+			
+				
+			</div>	
+			<!-- 
+			<div>
+				<button type="button" class="btn btn-primary btn-sm" id="groupall">전체</button>
+				<button type="button" class="btn btn-primary btn-sm" id="groupapt">아파트</button>
+				<button type="button" class="btn btn-primary btn-sm" id="grouphouse">주택</button>
 			</div>
-
-			
-			
+			 -->
 			<!-- 본문 -->
 			<div id="searchResult">
 				<c:if test="${total ne null}">
@@ -172,8 +187,9 @@
 				</c:forEach>
 			</div>
 		
-		
-			${navigation.navigator}
+			<div>
+				${navigation.navigator}
+			</div>
 		</div>
 	</div>
 	

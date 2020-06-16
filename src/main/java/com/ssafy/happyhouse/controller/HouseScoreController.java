@@ -60,7 +60,8 @@ public class HouseScoreController {
 			if (contents != null) {
 				model.addAttribute("contents", contents);
 			}
-
+			
+			model.addAttribute("pg", pg);
 			model.addAttribute("order", order);
 			model.addAttribute("total", total);
 			model.addAttribute("scores", scores);

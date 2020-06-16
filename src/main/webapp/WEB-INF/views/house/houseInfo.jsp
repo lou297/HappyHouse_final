@@ -18,6 +18,13 @@
 	src="http://maps.google.com/maps/api/js?key=AIzaSyCjA0YjA7wIVIwwsqyx8kj3qTbbUuA3ATg&sensor=true"></script>
 <script type="text/javascript" src="${root }/resources/js/houseInfo.js"></script>
 
+
+<!-- charts.js -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+
+<script type="text/javascript" src="${root }/resources/js/charts.js"></script>
+
 <link rel="stylesheet" type="text/css" href="${root }/resources/css/houseinfo.css">
 <script type="text/javascript">
 google.charts.load('current', {
@@ -170,7 +177,7 @@ function loadData() {
 		</c:choose>
 		 -->
 	</div>
-	
+	<canvas id="myChart" width="400" height="400"></canvas>
 	<%@ include file="../evaluation/evaluationFormModal.jsp" %>
 	
 	

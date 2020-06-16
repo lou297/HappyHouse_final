@@ -21,4 +21,6 @@ public interface TradeHubDao {
 	public List<String> showShopDongNames() throws SQLException;
 
 	public List<TradeHub> loadAllShops() throws SQLException;
+	
+	public List<TradeHub> findFilteredShops(String dong, String category) throws SQLException;
 }

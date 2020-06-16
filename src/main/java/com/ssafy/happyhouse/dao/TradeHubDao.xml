@@ -20,7 +20,9 @@
 				road_address as roadAddress,
 				lng as longitude,
 				lat as latitude
-		from trade_hub where b_dong_name like concat('%',#{dongName},'%')
+		from trade_hub
+		where b_dong_name like concat('%',#{dongName},'%')
+			and road_name like '%서울%'
 	</select>
 	
 	<!-- findShopByCategory -->
@@ -35,7 +37,10 @@
 				road_address as roadAddress,
 				lng as longitude,
 				lat as latitude
-		from trade_hub where big_category_name = #{bigCategoryName} limit 50
+		from trade_hub
+		where big_category_name = #{bigCategoryName}
+				and road_name like '%서울%'
+		limit 50
 	</select>
 	
 	<!-- showShopCategorys -->
@@ -62,6 +67,25 @@
 				lng as longitude,
 				lat as latitude
 		from trade_hub limit 500
+	</select>
+	
+	<select id="findFilteredShops" resultType="TradeHub">
+		select shop_name as shopName,
+				big_category_name as bigCategoryName,
+				middle_category_name as middleCategoryName,
+				small_category_name as smallCategoryName,
+				b_dong_code as dongCode,
+				b_dong_name as dongName,
+				floor_info as floorInfo,
+				road_address as roadAddress,
+				lng as longitude,
+				lat as latitude
+		from trade_hub
+		where b_dong_name like concat('%', #{dong}, '%')
+				and road_name like '%서울%'
+		<if test="category != '전체'">
+			and big_category_name = #{category}
+		</if>
 	</select>
 	
 </mapper>
