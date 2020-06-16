@@ -36,6 +36,17 @@
 		})
 	});
 </script>
+<<style>
+.text-body1{
+	top: 0;
+	
+}
+
+.text-body2{
+	display: inline-block;
+}
+
+</style>
 
 <body>
 
@@ -83,72 +94,78 @@
 				<c:forEach var="score" items="${scores}">
 						
 					<div class="justify-content-center border-bottom" align="left" style="margin-top:20px">
-						<h6 class="text-danger">${score.dong }</h6>
-						<a href="${root }/house/detail?no=${score.houseNo}" style="font-size:20px">${score.aptName }</a> 
-						<p>
-							<span class="text-info">교통 편의 : </span>
-							<c:forEach var = "item" begin="1" end="5">
-								<c:if test="${item <= score.transportationConvenience }">
-									<span class="starR on">별</span>
-								</c:if>
-								<c:if test="${item > score.transportationConvenience }">
-									<span class="starR">별</span>
-								</c:if>
-							</c:forEach>
-							<span class="text-warning">${score.transportationConvenience}점</span>
+						<div class="text-body1">
+							<h6 class="text-danger">${score.dong }</h6>
+							<a href="${root }/house/detail?no=${score.houseNo}" style="font-size:20px">${score.aptName }</a> 
+							<div style="padding: 10px">
+								<p id="comment">${score.comment }</p>
+							</div>
+						</div>
+						<div class="text-body2">
+							<p>
+								<span class="text-info">교통 편의 : </span>
+								<c:forEach var = "item" begin="1" end="5">
+									<c:if test="${item <= score.transportationConvenience }">
+										<span class="starR on">별</span>
+									</c:if>
+									<c:if test="${item > score.transportationConvenience }">
+										<span class="starR">별</span>
+									</c:if>
+								</c:forEach>
+								<span class="text-warning">${score.transportationConvenience}점</span>
+								
+							</p>
+							<p>
+								<span class="text-info">방음 : </span>
 							
-						</p>
-						<p>
-							<span class="text-info">방음 : </span>
-						
-							<c:forEach var = "item" begin="1" end="5">
-								<c:if test="${item <= score.soundProof }">
-									<span class="starR on">별</span>
-								</c:if>
-								<c:if test="${item > score.soundProof }">
-									<span class="starR">별</span>
-								</c:if>
-							</c:forEach>
-							<span class="text-warning">${score.soundProof }점</span>
-						</p>
-						<p>
-							<span class="text-info">편의 시설 : </span>
-						
-							<c:forEach var = "item" begin="1" end="5">
-								<c:if test="${item <= score.convenientFacilities }">
-									<span class="starR on">별</span>
-								</c:if>
-								<c:if test="${item > score.convenientFacilities }">
-									<span class="starR">별</span>
-								</c:if>
-							</c:forEach>
-							<span class="text-warning">${score.convenientFacilities }점</span>
-						</p>
-						<p>
-							<span class="text-info">채광 : </span>
-							<c:forEach var = "item" begin="1" end="5">
-								<c:if test="${item <= score.lighting }">
-									<span class="starR on">별</span>
-								</c:if>
-								<c:if test="${item > score.lighting }">
-									<span class="starR">별</span>
-								</c:if>
-							</c:forEach>
-							<span class="text-warning">${score.lighting }점</span>
-						</p>
-						<p>
-							<span class="text-info">총점 : </span> 
-							<c:forEach var = "item" begin="1" end="5">
-								<c:if test="${item <= score.scoreAvg }">
-									<span class="starR on">별</span>
-								</c:if>
-								<c:if test="${item > score.scoreAvg }">
-									<span class="starR">별</span>
-								</c:if>
-							</c:forEach>
-							<span class="text-warning">${score.scoreAvg }점</span>
-						</p>
-						<p id="comment">${score.comment }</p>
+								<c:forEach var = "item" begin="1" end="5">
+									<c:if test="${item <= score.soundProof }">
+										<span class="starR on">별</span>
+									</c:if>
+									<c:if test="${item > score.soundProof }">
+										<span class="starR">별</span>
+									</c:if>
+								</c:forEach>
+								<span class="text-warning">${score.soundProof }점</span>
+							</p>
+							<p>
+								<span class="text-info">편의 시설 : </span>
+							
+								<c:forEach var = "item" begin="1" end="5">
+									<c:if test="${item <= score.convenientFacilities }">
+										<span class="starR on">별</span>
+									</c:if>
+									<c:if test="${item > score.convenientFacilities }">
+										<span class="starR">별</span>
+									</c:if>
+								</c:forEach>
+								<span class="text-warning">${score.convenientFacilities }점</span>
+							</p>
+							<p>
+								<span class="text-info">채광 : </span>
+								<c:forEach var = "item" begin="1" end="5">
+									<c:if test="${item <= score.lighting }">
+										<span class="starR on">별</span>
+									</c:if>
+									<c:if test="${item > score.lighting }">
+										<span class="starR">별</span>
+									</c:if>
+								</c:forEach>
+								<span class="text-warning">${score.lighting }점</span>
+							</p>
+							<p>
+								<span class="text-info">총점 : </span> 
+								<c:forEach var = "item" begin="1" end="5">
+									<c:if test="${item <= score.scoreAvg }">
+										<span class="starR on">별</span>
+									</c:if>
+									<c:if test="${item > score.scoreAvg }">
+										<span class="starR">별</span>
+									</c:if>
+								</c:forEach>
+								<span class="text-warning">${score.scoreAvg }점</span>
+							</p>
+						</div>	
 					</div>
 			
 			
