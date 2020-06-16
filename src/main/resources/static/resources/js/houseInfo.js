@@ -181,9 +181,43 @@ function setMarkers(category) {
 }
 
 function initMarkers() {
-	var image = "http://localhost:7070/happyhouse/resources/icon/education.png";
+	//var image = "http://localhost:7070/happyhouse/resources/icon/education.png";
 	for (var i = 0; i < shoplist.length; i++) {
 		var shop = shoplist[i];
+		console.log(shop);
+		
+		var category = shop.bigCategoryName;
+		
+		var image = "";
+		switch(category) {
+		case "음식" :
+			image = "http://localhost:7070/happyhouse/resources/icon/food.png";
+			break;
+		case "생활서비스" :
+			image = "http://localhost:7070/happyhouse/resources/icon/life.png";
+			break;
+		case "소매" :
+			image = "http://localhost:7070/happyhouse/resources/icon/sales.png";
+			break;
+		case "의료" :
+			image = "http://localhost:7070/happyhouse/resources/icon/medical.png";
+			break;
+		case "학문/교육" :
+			image = "http://localhost:7070/happyhouse/resources/icon/education.png";
+			break;
+		case "관광/여가/오락" :
+			image = "http://localhost:7070/happyhouse/resources/icon/game.png";
+			break;
+		case "부동산" :
+			image = "http://localhost:7070/happyhouse/resources/icon/estate.png";
+			break;
+		case "숙박" :
+			image = "http://localhost:7070/happyhouse/resources/icon/sleep.png";
+			break;
+		case "스포츠" :
+			image = "http://localhost:7070/happyhouse/resources/icon/sports.png";
+			break;
+	}
 		var marker = new google.maps.Marker({
 			position : {
 				lat : shop.latitude,
