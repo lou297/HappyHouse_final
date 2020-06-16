@@ -126,10 +126,27 @@ function loadData() {
 		
 		
 		<p class="text-primary title_p">사용자 평가</p>
+		<!-- 
 		<div id="chart" style="width: 900px; height: 500px;"></div>
-		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#evaluationFormModal">평가 작성하기</button>
-		<!-- <button type="button" class="btn btn-primary" onclick="location.href='${root}/score/evaluation?no=${deal.no }'">평가 작성하기</button>  -->
-		<button type="button" class="btn btn-primary" onclick="location.href='${root}/score/main?houseno=${deal.no }&pg=1&order=DATE'">평가 상세보기</button>
+		 -->
+		<canvas id="myChart1" width="500px" height="200px" style="float : left"></canvas>
+		<canvas id="myChart2" width="500px" height="200px"></canvas>
+		<canvas id="myChart3" width="500px" height="200px" style="float : left"></canvas>
+		<canvas id="myChart4" width="500px" height="200px"></canvas>
+		<canvas id="myChart5" width="500px" height="200px" style="float : left"></canvas>
+		<!-- 
+		<div style="height: 200px; display: table-cell; vertical-align: middle;">
+			<button type="button" class="btn btn-primary" style="margin:auto auto;" data-toggle="modal" data-target="#evaluationFormModal">평가 작성하기</button>
+			<button type="button" class="btn btn-primary" onclick="location.href='${root}/score/main?houseno=${deal.no }&pg=1&order=DATE'">평가 상세보기</button>
+		</div>
+		 -->
+		<div style="height: 200px; position: relative;">
+			<div style="position: absolute; right: 0px; bottom : 0px;">
+				<button type="button" class="btn btn-primary" style="margin:auto auto;" data-toggle="modal" data-target="#evaluationFormModal">평가 작성하기</button>
+				<button type="button" class="btn btn-primary" onclick="location.href='${root}/score/main?houseno=${deal.no }&pg=1&order=DATE'">평가 상세보기</button>
+			</div>
+			
+		</div>
 		
 		
 		<p class="text-primary title_p">주변 상권 정보</p>
@@ -177,7 +194,7 @@ function loadData() {
 		</c:choose>
 		 -->
 	</div>
-	<canvas id="myChart" width="400" height="400"></canvas>
+	
 	<%@ include file="../evaluation/evaluationFormModal.jsp" %>
 	
 	

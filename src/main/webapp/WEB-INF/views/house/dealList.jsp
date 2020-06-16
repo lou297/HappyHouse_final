@@ -315,8 +315,10 @@
 
 				</c:forEach>
 			</div>
+			<div align="center">
+				${navigation.navigator}
+			</div>
 			
-			${navigation.navigator}
 
 		</div>
 	</div>
