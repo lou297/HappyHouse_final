@@ -56,7 +56,10 @@ function calculData(dong, house) {
 
 	// ////////////////////////////////////////////
 
-	loadChart(dongAvg, houseAvg);
+//	loadChart(dongAvg, houseAvg);
+	setCharts(dongAvg, houseAvg);
+//	var ctx2 = document.getElementById('myChart2').getContext("2d");
+//	drawCharts(ctx2, "교통 편의",10 ,30);
 }
 
 function loadChart(dongAvg, houseAvg) {
