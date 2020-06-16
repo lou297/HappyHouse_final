@@ -41,8 +41,9 @@
 
 	<div class="container" align="center">
 		<div class="col-lg-12" style="margin-top : 100px">
-			<h2>평가 내역</h2>
-			
+			<div id="title_area"">
+				<h2 style="vertical-align : middle">평가 목록</h2>
+			</div>
 			<div id="data">
 				<input type="hidden" name="order" id="order" value= "DATE">
 				<input type="hidden" name="houseno" id="houseno" value=-1>
@@ -51,17 +52,8 @@
 			</div>
 			
 			
-			<!-- 검색 창 -->
-			<div class="form-group input-group" align="left">
-				<input type="text" class="form-control" id="contents" name="contents"
-					placeholder="" value="${contents}">
-				<div class="input-group-append">
-					<button type="button" class="btn btn-dark text-white" onclick="javascript:requestFilteredScores();">검색</button>
-				</div>
-			</div>
-
 			<!-- 정렬 선택 -->
-			<select id="select_order">
+			<select id="select_order" style="margin-top:50px">
 				<option value="DATE" <c:if test="${order eq 'DATE'}">selected="selected"</c:if> >최신 순</option>
 				<option value="AVG" <c:if test="${order eq 'AVG'}">selected="selected"</c:if> >통합 평균 순</option>
 				<option value="TRANS" <c:if test="${order eq 'TRANS'}">selected="selected"</c:if> >교통 편의 순</option>
@@ -71,10 +63,21 @@
 			</select>
 			
 			
+			<!-- 검색 창 -->
+			<div class="form-group input-group col-6" align="left">
+				<input type="text" class="form-control" id="contents" name="contents"
+					placeholder="" value="${contents}">
+				<div class="input-group-append">
+					<button type="button" class="btn btn-primary" onclick="javascript:requestFilteredScores();">검색</button>
+				</div>
+			</div>
+
+			
+			
 			<!-- 본문 -->
 			<div id="searchResult">
 				<c:if test="${total ne null}">
-					<p style = "color: red">total : ${total }</p>
+					<p style = "color: red; font-size : 22px;" align="left">total : ${total }</p>
 				</c:if>
 					
 				<c:forEach var="score" items="${scores}">

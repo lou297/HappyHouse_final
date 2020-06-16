@@ -56,21 +56,24 @@
 	}
 	*/
 </script>
+
 </head>
 <body>
-	<table align="center" cellspacing="0">
+	<table align="center" cellspacing="0" class="table-borderless" style="margin-top : 150px">
 		<thead>
 			<tr class="top">
 			</tr>
 			<tr>
-				<td colspan="2" class="caption">평가 화면</td>
+				<td colspan="2" class="caption bg-primary text-white"><p>평가 화면</p></td>
 			</tr>
 			<tr>
 				<td colspan="2" class="bpadding">&nbsp;</td>
 			</tr>
+			<!-- 
 			<tr>
 				<td colspan="2" class="tbasic tspacial">&nbsp;</td>
 			</tr>
+			 -->
 		</thead>
 		<form id="frm" name="frm" method="post" action="${root}/score/evaluationForm">
 			<tbody>
@@ -79,7 +82,7 @@
 				<input type="hidden" name="aptName" value="" />
 		
 				<tr>
-					<td class="tbasic">교통편의</td>
+					<td class="tbasic"><p>교통편의</p></td>
 					<td class="tbasic">
 						<div class="starRevT">
 						  <span class="starR on">별1</span>
@@ -92,7 +95,7 @@
 						id="transportationConvenience" name="transportationConvenience" value="1"/></td>
 				</tr>
 				<tr>
-					<td class="tbasic">방음</td>
+					<td class="tbasic"><p>방음</p></td>
 					<td class="tbasic">
 						<div class="starRevS">
 						  <span class="starR on">별1</span>
@@ -105,7 +108,7 @@
 						id="soundProof" name="soundProof" value="1"/></td>
 				</tr>
 				<tr>
-					<td class="tbasic">편의 시설</td>
+					<td class="tbasic"><p>편의 시설</p></td>
 					<td class="tbasic">
 						<div class="starRevC">
 						  <span class="starR on">별1</span>
@@ -118,7 +121,7 @@
 						id="convenientFacilities" name="convenientFacilities" value="1"/></td>
 				</tr>
 				<tr>
-					<td class="tbasic">채광</td>
+					<td class="tbasic"><p>채광</p></td>
 					<td class="tbasic">
 						<div class="starRevL">
 						  <span class="starR on">별1</span>
@@ -131,12 +134,12 @@
 						name="lighting" value="1"/></td>
 				</tr>
 				<tr>
-					<td class="tbasic">총점</td>
+					<td class="tbasic"><p>총점</p></td>
 					<td class="tbasic"><input type=text size="40" id="scoreAvg"
 						name="scoreAvg" readonly="readonly"/></td>
 				</tr>
 				<tr>
-					<td class="tbasic">코멘트</td>
+					<td class="tbasic"><p>코멘트</p></td>
 					<td class="tbasic"><textarea rows="3" cols="42"
 							id="comment" name="comment"></textarea></td>
 				</tr>
@@ -144,11 +147,11 @@
 					<td colspan="2" class="bpadding">&nbsp;</td>
 				</tr>
 				<tr>
-					<td colspan="2" align="center" class="tspacial tfoot">
+					<td colspan="2" align="center" class=" tfoot">
 
-						<button type="button" onclick="javascript:returnPage();">돌아가기</button>
-						<input type="button" value="평가 등록" id="btn1"> <input
-						type="reset" value="취소">
+						<button type="button" onclick="javascript:returnPage();" class="btn btn-primary">돌아가기</button>
+						<input type="button" value="평가 등록" id="btn1" class="btn btn-primary"> <input
+						type="reset" value="취소" class="btn btn-primary">
 					</td>
 				</tr>
 			</tbody>

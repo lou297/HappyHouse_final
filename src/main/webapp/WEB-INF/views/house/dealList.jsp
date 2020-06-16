@@ -14,22 +14,20 @@
 	}
 	
 	function requestFilteredHouses() {
+		<!--
 		var group = document.getElementsByName("group");
+		-->
+		var g = $("#group").val();
 		
-		for(var i=0;i<group.length;i++){
-			if(group[i].checked==true){
-				var g = group[i].value;
-				
-				if( $("#dong").val() != "0" )
-					location.href="${root}/house/main?group=" + g+"&contents=" + $("#contents").val()+"&pg="+$("#pg").val() +"&dong="+$("#dong").val();
-				else
-					location.href="${root}/house/main?group=" + g+"&contents=" + $("#contents").val()+"&pg="+$("#pg").val();
-					
-			}
-		}
+		if( $("#dong").val() != "0" )
+			location.href="${root}/house/main?group=" + g+"&contents=" + $("#contents").val()+"&pg="+$("#pg").val() +"&dong="+$("#dong").val();
+		else
+			location.href="${root}/house/main?group=" + g+"&contents=" + $("#contents").val()+"&pg="+$("#pg").val();
+		
 	}
 	
 	$(document).ready(function(){
+		
 
 		$.get("${root}/select/sido"
 			,function(data, status){
@@ -39,6 +37,28 @@
 			}//function
 			, "json"
 		);//get
+		
+		
+		$("#groupall").click(function() {
+			if( $("#dong").val() != "0" )
+				location.href="${root}/house/main?group=all&contents=" + $("#contents").val()+"&pg="+$("#pg").val() +"&dong="+$("#dong").val();
+			else
+				location.href="${root}/house/main?group=all&contents=" + $("#contents").val()+"&pg="+$("#pg").val();
+		});
+		$("#groupapt").click(function() {
+			if( $("#dong").val() != "0" )
+				location.href="${root}/house/main?group=apt&contents=" + $("#contents").val()+"&pg="+$("#pg").val() +"&dong="+$("#dong").val();
+			else
+				location.href="${root}/house/main?group=apt&contents=" + $("#contents").val()+"&pg="+$("#pg").val();
+		});
+		$("#grouphouse").click(function() {
+			if( $("#dong").val() != "0" )
+				location.href="${root}/house/main?group=house&contents=" + $("#contents").val()+"&pg="+$("#pg").val() +"&dong="+$("#dong").val();
+			else
+				location.href="${root}/house/main?group=house&contents=" + $("#contents").val()+"&pg="+$("#pg").val();
+				
+		});
+		
 	});//ready
 	$(document).ready(function(){
 		$("#sido").change(function() {
@@ -117,59 +137,55 @@
 
 
 <body>
-	<div class="container" align="center">
+	<div class="container">
 
 		<div class="col-lg-12" style="margin-top : 100px">
-			<h2>거래 목록</h2>
-			
-			<div style="margin-top: 50px">
-				<select id="sido">
-					<option value="0">시</option>
-				</select>
-				<select id="gugun">
-					<option value="0">구군</option>
-				</select>
-				<select id="dong">
-					<option value="0">동</option>
-				</select>
-			</div>
-			
-
-			<div style="margin-bottom: 50px">
-				<form id="loginform" method="get" action="">
-					<input type="hidden" name="pg" id="pg" value="1"> <input
-						type="radio" id="all" value="all" name="group"
-						onclick="location.href='javascript:requestFilteredHouses();'"
-						<c:if test="${group eq 'all'}">checked="checked"</c:if>> <label
-						for="all">전체</label> <input type="radio" id="apt" value="apt"
-						name="group"
-						onclick="location.href='javascript:requestFilteredHouses();'"
-						<c:if test="${group eq 'apt'}">checked="checked"</c:if>> <label
-						for="apt">아파트</label> <input type="radio" id="house" value="house"
-						name="group"
-						onclick="location.href='javascript:requestFilteredHouses();'"
-						<c:if test="${group eq 'house'}">checked="checked"</c:if>>
-					<label for="house">주택</label>
-					<div class="form-group input-group" align="left">
+		
+			<div align="center">
+				<h2>거래 목록</h2>
+				
+				<div style="margin-top: 50px">
+					<select id="sido">
+						<option value="0">시</option>
+					</select>
+					<select id="gugun">
+						<option value="0">구군</option>
+					</select>
+					<select id="dong">
+						<option value="0">동</option>
+					</select>
+				</div>
+				
+				<input type="hidden" name="pg" id="pg" value="1"> 
+				<input type="hidden" name="group" id="group" value="${group }">
+				<div class="form-group input-group col-6">
 						<input type="text" class="form-control" id="contents" name="contents"
 							placeholder="" value="${search}">
 						<div class="input-group-append">
-							<button type="button" class="btn btn-dark text-white" onclick="javascript:requestFilteredHouses();">검색</button>
+							<button type="button" class="btn btn-primary" onclick="javascript:requestFilteredHouses();">검색</button>
 						</div>
 					</div>
-				</form>
-
+				
+			</div>
+			
+			
+			
+			
+			<div>
+				<button type="button" class="btn btn-primary btn-sm" id="groupall">전체</button>
+				<button type="button" class="btn btn-primary btn-sm" id="groupapt">아파트</button>
+				<button type="button" class="btn btn-primary btn-sm" id="grouphouse">주택</button>
 			</div>
 
 
 			<div id="searchResult">
 				<c:if test="${total ne null}">
-					<p style = "color: red">total : ${total }</p>
+					<p style = "color: red; font-size : 22px; margin-bottom : 0px">total : ${total }</p>
 				</c:if>
 			
 				<c:forEach var="deal" items="${dealList}">
 				
-					<div class="justify-content-center border-bottom" align="left" style="margin-top:20px">
+					<div class="justify-content-center border-top list_form" align="left" style="margin-top:20px">
 						<a href="${root}/house/detail?no=${deal.no}"  style="font-size:20px"><b>${deal.aptName }</b></a>
 						<p>거래금액 : ${deal.dealAmount }만원</p>
 						<p>면적 : ${deal.area }</p>
