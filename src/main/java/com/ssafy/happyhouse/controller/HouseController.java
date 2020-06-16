@@ -127,8 +127,59 @@ public class HouseController {
 	}
 	
 	@GetMapping("/tradeHubBaseSearch")
-	public String rtradeHubBasePage() {
-		
+	public String rtradeHubBasePage(String group,  String contents, String dong, int pg, String spp, Model model) throws Exception {
+			
+			HousePageBean bean = new HousePageBean();
+			
+			int sizePerPage = spp == null ? 10 : Integer.parseInt(spp);//없으면 10개 보여주고 입력받은게 있으면 그만큼 보여줌
+			
+			switch(group) {
+			case "all" :
+				boolean[] allB = {true, true, true, true};
+				bean.setSearchType(allB);
+				break;
+			case "apt" :
+				boolean[] aptB = {true, false, true, false};
+				bean.setSearchType(aptB);
+				break;
+			case "house" :
+				boolean[] houseB = {false, true, false, true};
+				bean.setSearchType(houseB);
+				break;
+			}
+			
+			if(contents != null) {
+				bean.setAptname(contents);
+				bean.setDong(contents);
+				model.addAttribute("search", contents);
+			}
+			
+			if(dong != null) {
+				bean.setDong(dong);
+				List<TradeHub> hublist = tradeHubService.findShopByDongName(dong);
+				model.addAttribute("hublist", hublist);
+				int countHub = tradeHubService.getTotalCount(hublist);
+				model.addAttribute("totalHub", countHub);
+			}
+			
+			
+			try {
+				List<HouseDeal> dealList =houseService.searchAll(pg, sizePerPage, bean);
+				
+				int count = houseService.getTotalCount(bean);
+				
+				PageNavigation pageNavigation = houseService.makePageNavigation(pg, sizePerPage, bean);
+				model.addAttribute("total", count);
+				
+				model.addAttribute("dealList", dealList);
+				model.addAttribute("group", group);
+				model.addAttribute("navigation", pageNavigation);
+
+			} catch(Exception e) {
+				model.addAttribute("msg", e.toString());
+				return "/error.jsp";
+			}
+			
 		return "/tradehubBaseSearch/tradeHubBaseSearch";
 	}
 
