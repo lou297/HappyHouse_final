@@ -69,7 +69,7 @@
 		from trade_hub limit 500
 	</select>
 	
-	<select id="findFilteredShops" resultType="TradeHub">
+	<select id="findFilteredShops" parameterType="map" resultType="TradeHub">
 		select shop_name as shopName,
 				big_category_name as bigCategoryName,
 				middle_category_name as middleCategoryName,

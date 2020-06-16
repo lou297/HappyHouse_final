@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import com.ssafy.happyhouse.dto.TradeHub;
@@ -22,5 +23,5 @@ public interface TradeHubDao {
 
 	public List<TradeHub> loadAllShops() throws SQLException;
 	
-	public List<TradeHub> findFilteredShops(String dong, String category) throws SQLException;
+	public List<TradeHub> findFilteredShops(@Param("dong")String dong, @Param("category")String category) throws SQLException;
 }
