@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ include file="../menu/nav.jsp"%>
 <head>
 <title>SSAFY</title>
 <meta charset="utf-8">
@@ -16,7 +17,6 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
 
-<%@ include file="../menu/nav.jsp"%>
 <c:set var="root" value="${pageContext.request.contextPath }" />
 <script type="text/javascript">
 	function requestFilteredHouses() {
@@ -136,8 +136,8 @@
 						name="group"
 						onclick="location.href='javascript:requestFilteredHouses();'"
 						<c:if test="${group eq 'house'}">checked="checked"</c:if>>
-					<label for="house">주택</label> <span style="margin: 20px"> <select
-						id="sido">
+					<label for="house">주택</label> <span style="margin: 20px"> 
+					<select	id="hub">
 							<option value="0">음식</option>
 							<option value="0">생활서비스</option>
 							<option value="0">소매</option>
@@ -178,6 +178,7 @@
 				</c:forEach>
 			</c:otherwise>
 		</c:choose>
+		
 	</div>
 </body>
 </html>
