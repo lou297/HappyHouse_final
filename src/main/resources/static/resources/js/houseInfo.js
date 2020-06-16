@@ -184,7 +184,6 @@ function initMarkers() {
 	//var image = "http://localhost:7070/happyhouse/resources/icon/education.png";
 	for (var i = 0; i < shoplist.length; i++) {
 		var shop = shoplist[i];
-		console.log(shop);
 		
 		var category = shop.bigCategoryName;
 		
