@@ -19,11 +19,7 @@
 		-->
 		var g = $("#group").val();
 
-		if ($("#dong").val() != "0")
-			location.href = "${root}/house/main?group=" + g + "&contents="
-					+ $("#contents").val() + "&pg=" + $("#pg").val() + "&dong="
-					+ $("#dong").val();
-		else
+		
 			location.href = "${root}/house/main?group=" + g + "&contents="
 					+ $("#contents").val() + "&pg=" + $("#pg").val();
 
