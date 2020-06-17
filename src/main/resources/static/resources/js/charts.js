@@ -19,11 +19,11 @@ function setCharts(dongAvg, houseAvg) {
 
 function drawCharts(domElement, label, firstData, secondData) {
 	var myChart = new Chart(domElement, {
-	    type: 'horizontalBar',
+	    type: 'bar',
 	    data: {
 	        labels: ['현재 부동산', '지역 전체'],
 	        datasets: [{
-	            label: label,
+	            //label: label,
 	            data: [firstData.toFixed(2), secondData.toFixed(2)],
 	            backgroundColor: [
 	                'rgba(54, 162, 235, 0.2)',
@@ -38,6 +38,9 @@ function drawCharts(domElement, label, firstData, secondData) {
 	        }]
 	    },
 	    options: {
+	    	legend: {
+	    		display:false
+	    	},
 	    	responsive: false,
 	    	tooltips: {
 				enabled: false
@@ -78,6 +81,12 @@ function drawCharts(domElement, label, firstData, secondData) {
 	                
 	            }],
 	            yAxes: [{
+	            	ticks: {
+	                    beginAtZero: true,
+	                    steps: 1,
+	                    setpValue : 5,
+	                    max: 5
+	                }, 
 	                   gridLines : {
 	                       display : false
 	                   }

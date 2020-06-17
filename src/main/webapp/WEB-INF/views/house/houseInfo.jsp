@@ -86,7 +86,7 @@ function loadData() {
 			<img src="${root}/resources/img/${deal.img}"  class="img-thumbnail" style="width: 350px; height : 300px; float:left">
 			<div style="float:left; margin-left:50px; margin-top:20px" class="col-6">
 				<p class="text-danger">${deal.dong }</p>
-				<h3 class="text-primary">${deal.aptName }</h3>
+				<h3>${deal.aptName }</h3>
 				<p class="house_info_p"><span>거래일자: </span>${deal.dealYear }<span>년 </span>${deal.dealMonth }<span>월 </span>${deal.dealDay }<span>일</span></p>
 				<p class="house_info_p"><span>거래액: </span>${deal.dealAmount }<span> 만원</span></p>
 				<p class="house_info_p"><span>면적: </span>${deal.area }<span> m2</span></p>
@@ -125,21 +125,45 @@ function loadData() {
 		</div>
 		
 		
-		<p class="text-primary title_p">사용자 평가</p>
+		<div id="chart_title">
+			<span class="text-primary title_p">사용자 평가</span>
+			<button type="button" class="btn  btn-light eval_btn"" data-toggle="modal" data-target="#evaluationFormModal">평가 작성하기</button>
+			<button type="button" class="btn  btn-light eval_btn" onclick="location.href='${root}/score/main?houseno=${deal.no }&pg=1&order=DATE'">평가 상세보기</button>
+		</div>
+		
 		<!-- 
 		<div id="chart" style="width: 900px; height: 500px;"></div>
 		 -->
-		<canvas id="myChart1" width="500px" height="200px" style="float : left"></canvas>
-		<canvas id="myChart2" width="500px" height="200px"></canvas>
-		<canvas id="myChart3" width="500px" height="200px" style="float : left"></canvas>
-		<canvas id="myChart4" width="500px" height="200px"></canvas>
-		<canvas id="myChart5" width="500px" height="200px" style="float : left"></canvas>
+		 <div id="chart_container">
+		 	<div class="chart">
+		 		<canvas id="myChart1" width="220px" height="250px" style="float : left"></canvas>
+		 		<p>교통 편의</p>
+		 	</div>
+		 	<div class="chart">
+				<canvas id="myChart2" width="220px" height="250px" style="float : left"></canvas>
+		 		<p>방음</p>
+		 	</div>
+		 	<div class="chart">
+		 		<canvas id="myChart3" width="220px" height="250px" style="float : left"></canvas>
+		 		<p>편의 시설</p>
+		 	</div>
+		 	<div class="chart">
+		 		<canvas id="myChart4" width="220px" height="250px" style="float : left"></canvas>
+		 		<p>채광</p>
+		 	</div>
+		 	<div class="chart">
+		 		<canvas id="myChart5" width="220px" height="250px" style="float : left"></canvas>
+		 		<p>평가 평균</p>
+		 	</div>
+			
+		 </div>
+		
 		<!-- 
 		<div style="height: 200px; display: table-cell; vertical-align: middle;">
 			<button type="button" class="btn btn-primary" style="margin:auto auto;" data-toggle="modal" data-target="#evaluationFormModal">평가 작성하기</button>
 			<button type="button" class="btn btn-primary" onclick="location.href='${root}/score/main?houseno=${deal.no }&pg=1&order=DATE'">평가 상세보기</button>
 		</div>
-		 -->
+		 
 		<div style="height: 200px; position: relative;">
 			<div style="position: absolute; right: 0px; bottom : 0px;">
 				<button type="button" class="btn btn-primary" style="margin:auto auto;" data-toggle="modal" data-target="#evaluationFormModal">평가 작성하기</button>
@@ -147,7 +171,7 @@ function loadData() {
 			</div>
 			
 		</div>
-		
+		-->
 		
 		<p class="text-primary title_p">주변 상권 정보</p>
 		<div id="category_container">
@@ -165,7 +189,26 @@ function loadData() {
 			</select>
 		</div>
 		<div id="map_canvas" class="embed-container"></div>
-		
+		<div>
+			<img src=  "http://localhost:7070/happyhouse/resources/icon/food.png">
+			<span>음식</span>
+			<img src=  "http://localhost:7070/happyhouse/resources/icon/life.png">
+			<span>생활</span>
+			<img src=  "http://localhost:7070/happyhouse/resources/icon/sales.png">
+			<span>소매</span>
+			<img src=  "http://localhost:7070/happyhouse/resources/icon/medical.png">
+			<span>의료</span>
+			<img src=  "http://localhost:7070/happyhouse/resources/icon/education.png">
+			<span>교육</span>
+			<img src=  "http://localhost:7070/happyhouse/resources/icon/game.png">
+			<span>오락</span>
+			<img src=  "http://localhost:7070/happyhouse/resources/icon/estate.png">
+			<span>부동산</span>
+			<img src=  "http://localhost:7070/happyhouse/resources/icon/sleep.png">
+			<span>숙박</span>
+			<img src=  "http://localhost:7070/happyhouse/resources/icon/sports.png">
+			<span>스포츠</span>
+		</div>
 		
 		<div id="selected">
 			<p>상호명 : <span id="selected_shop_name"></span></p>
