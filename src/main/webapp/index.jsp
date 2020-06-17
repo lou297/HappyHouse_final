@@ -24,7 +24,7 @@
 <script>
 	$(document).ready(function() {
 		$('#myCarousel').carousel({
-			interval : 2000
+			interval : 4000
 		})
 	});
 
@@ -34,6 +34,7 @@
 	}
 </script>
 
+
 <body>
 	<div align="center">
 
@@ -42,7 +43,7 @@
 		<div style="padding: 30px" id="title_area">
 			<p
 				style="font-size: 26px; font-family: sans-serif; font-weight: lighter; margin: 20px">
-				<span class="text-primary font-weight-bold" style="font-size : 30px">어떤 동네, 어떤 집</span>에서 <br>살고 싶으신가요?
+				<span class="text-primary font-weight-bold" style="font-size : 40px">어떤 동네, 어떤 집</span>에서 <br>살고 싶으신가요?
 			</p>
 
 
@@ -72,7 +73,7 @@
 		<!-- thumbnail -->
 		<div>
 			<div class="row min-vh-50 align-items-center"
-				style="margin: 25px; max-width: 60%">
+				style="margin: 25px; max-width: 70%">
 				<div class="col-lg-8 offset-lg-2" id="slider">
 					<div id="myCarousel" class="carousel slide shadow-sm">
 						<!-- main slider carousel items -->
@@ -82,30 +83,30 @@
 									href="${root}/score/main?contents=&order=TRANS&pg=1">
 									<img src="${root}/resources/img/trans.jpg" class="img-fluid">
 								</a>
-								<p class="text-primary">접근성</p>
+								<p class="carousel_text">접근성</p>
 							</div>
 							<div class="carousel-item" data-slide-number="1">
 								<a href="${root}/score/main?contents=&order=SOUNDPROOT&pg=1">
 									<img src="${root}/resources/img/sound.png" class="img-fluid">
 								</a>
-								<p class="text-primary">방음</p>
+								<p class="carousel_text">방음</p>
 							</div>
 							<div class="carousel-item" data-slide-number="2">
 								<a href="${root}/score/main?contents=&order=FACILITY&pg=1">
 									<img src="${root}/resources/img/facility.jpg" class="img-fluid">
 								</a>
-								<p class="text-primary">편의시설</p>
+								<p class="carousel_text">편의시설</p>
 							</div>
 							<div class="carousel-item" data-slide-number="3">
 								<a href="${root}/score/main?contents=&order=LIGHTING&pg=1">
 									<img src="${root}/resources/img/light.jpg" class="img-fluid">
 								</a>
-								<p class="text-primary">채광</p>
+								<p class="carousel_text">채광</p>
 							</div>
 							<div class="carousel-item" data-slide-number="4">
 								<a href="${root}/score/main?contents=&order=AVG&pg=1"> <img
 									src="${root}/resources/img/avg.png" class="img-fluid"></a>
-								<p class="text-primary">평점</p>
+								<p class="carousel_text">평점</p>
 							</div>
 
 

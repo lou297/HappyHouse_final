@@ -40,11 +40,11 @@
 
 .img-fluid {
 	padding-top: 10px;
-	max-width: 300px;
+	max-width: 500px;
 }
 
 .img-fluid_list {
-	max-width: 100px;
+	max-width: 150px;
 }
 
 .embed-container {
@@ -73,7 +73,11 @@ ul {
 }
 
 #title_area {
-	margin-top : 100px;
+	margin-top : 50px;
 }
 
+
+.carousel_text {
+	font-size : 20px;
+}
 
