@@ -23,6 +23,7 @@
 			<if test="aptname != null">
 				or aptname like concat('%',#{aptname},'%') )
 			</if>
+		order by dealYear desc, dealMonth desc, dealDay desc
 		<if test="currentPage != null">
 		limit #{currentPage}, #{sizePerPage}
 		</if>
