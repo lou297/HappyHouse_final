@@ -136,23 +136,23 @@ function loadData() {
 		 -->
 		 <div id="chart_container">
 		 	<div class="chart">
-		 		<canvas id="myChart1" width="220px" height="250px" style="float : left"></canvas>
+		 		<canvas id="myChart1" width="220px" height="250px"></canvas>
 		 		<p>교통 편의</p>
 		 	</div>
 		 	<div class="chart">
-				<canvas id="myChart2" width="220px" height="250px" style="float : left"></canvas>
+				<canvas id="myChart2" width="220px" height="250px"></canvas>
 		 		<p>방음</p>
 		 	</div>
 		 	<div class="chart">
-		 		<canvas id="myChart3" width="220px" height="250px" style="float : left"></canvas>
+		 		<canvas id="myChart3" width="220px" height="250px"></canvas>
 		 		<p>편의 시설</p>
 		 	</div>
 		 	<div class="chart">
-		 		<canvas id="myChart4" width="220px" height="250px" style="float : left"></canvas>
+		 		<canvas id="myChart4" width="220px" height="250px"></canvas>
 		 		<p>채광</p>
 		 	</div>
 		 	<div class="chart">
-		 		<canvas id="myChart5" width="220px" height="250px" style="float : left"></canvas>
+		 		<canvas id="myChart5" width="220px" height="250px"></canvas>
 		 		<p>평가 평균</p>
 		 	</div>
 			

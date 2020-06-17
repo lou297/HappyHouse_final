@@ -75,25 +75,30 @@
 				</div>
 				
 				
-				<!-- 정렬 선택 -->
-				<select id="select_order" style="margin-top:50px">
-					<option value="AVG" <c:if test="${order eq 'AVG'}">selected="selected"</c:if> >통합 평균 순</option>
-					<option value="TRANS" <c:if test="${order eq 'TRANS'}">selected="selected"</c:if> >교통 편의 순</option>
-					<option value="SOUNDPROOT" <c:if test="${order eq 'SOUNDPROOT'}">selected="selected"</c:if> >방음 순</option>
-					<option value="FACILITY" <c:if test="${order eq 'FACILITY'}">selected="selected"</c:if> >편의시설 순</option>
-					<option value="LIGHTING" <c:if test="${order eq 'LIGHTING'}">selected="selected"</c:if> >채광 순</option>
-					<option value="DATE" <c:if test="${order eq 'DATE'}">selected="selected"</c:if> >최신 순</option>
-				</select>
 				
-				
-				<!-- 검색 창 -->
-				<div class="form-group input-group col-6" align="left">
-					<input type="text" class="form-control" id="contents" name="contents"
-						placeholder="" value="${contents}">
-					<div class="input-group-append">
-						<button type="button" class="btn btn-primary" onclick="javascript:searchContents();">검색</button>
+				<div class="col-8">
+						<!-- 정렬 선택 -->
+					<select id="select_order" class="custom-select col-2">
+						<option value="AVG" <c:if test="${order eq 'AVG'}">selected="selected"</c:if> >통합 평균 순</option>
+						<option value="TRANS" <c:if test="${order eq 'TRANS'}">selected="selected"</c:if> >교통 편의 순</option>
+						<option value="SOUNDPROOT" <c:if test="${order eq 'SOUNDPROOT'}">selected="selected"</c:if> >방음 순</option>
+						<option value="FACILITY" <c:if test="${order eq 'FACILITY'}">selected="selected"</c:if> >편의시설 순</option>
+						<option value="LIGHTING" <c:if test="${order eq 'LIGHTING'}">selected="selected"</c:if> >채광 순</option>
+						<option value="DATE" <c:if test="${order eq 'DATE'}">selected="selected"</c:if> >최신 순</option>
+					</select>
+					
+					
+					<!-- 검색 창 -->
+					<div id="search_container" class="form-group input-group col-9" align="left">
+						<input type="text" class="form-control" id="contents" name="contents"
+							placeholder="" value="${contents}">
+						<div class="input-group-append">
+							<button type="button" class="btn btn-primary" onclick="javascript:searchContents();">검색</button>
+						</div>
 					</div>
+					<div style="clear : both"></div>
 				</div>
+				
 	
 			
 				
@@ -108,7 +113,7 @@
 			<!-- 본문 -->
 			<div id="searchResult">
 				<c:if test="${total ne null}">
-					<p style = "color: red; font-size : 22px;" align="center">total : ${total }</p>
+					<p style = "color: gray; font-size : 22px;" align="right">total : ${total }</p>
 				</c:if>
 					
 				<c:forEach var="score" items="${scores}">
