@@ -23,8 +23,25 @@
 			<if test="aptname != null">
 				or aptname like concat('%',#{aptname},'%') )
 			</if>
-		
+		<if test="currentPage != null">
 		limit #{currentPage}, #{sizePerPage}
+		</if>
+	</select>
+	
+	<!-- searchAll -->
+	<select id="searchNoByDongAptName" resultType="HouseDeal" parameterType="map">
+		select * from HouseDeal
+		where
+	        
+			<if test="dong != null">
+				( dong like concat('%',#{dong},'%')
+			</if>
+			<if test="aptname != null">
+				and aptname like concat('%',#{aptname},'%') )
+			</if>
+		<if test="currentPage != null">
+		limit #{currentPage}, #{sizePerPage}
+		</if>
 	</select>
 	
 	<select id="getTotalCount" resultType="Integer" parameterType="map">

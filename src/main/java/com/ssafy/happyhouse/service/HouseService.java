@@ -18,6 +18,8 @@ public interface HouseService {
 	 */
 	public List<HouseDeal> searchAll(int currentPage, int sizePerPage, HousePageBean  bean);
 	
+	public HouseDeal searchNoByDongAptName(String dong, String aptName) throws SQLException;
+	
 	public int getTotalCount(HousePageBean  bean) throws SQLException;
 	
 	/**

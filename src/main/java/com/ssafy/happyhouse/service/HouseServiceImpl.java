@@ -68,6 +68,21 @@ public class HouseServiceImpl implements HouseService{
 		}
 	}
 	
+
+	@Override
+	public HouseDeal searchNoByDongAptName(String dong, String aptName) throws SQLException {
+		
+		HashMap<String,Object> map = new HashMap<String, Object>();
+		map.put("aptname", aptName);
+		map.put("dong", dong);
+		map.put("currentPage", 0);
+		map.put("sizePerPage", 1);
+		List<HouseDeal> deals = houseDao.searchNoByDongAptName(map);
+		
+		// TODO Auto-generated method stub
+		return deals.get(0);
+	}
+	
 	@Override
 	public int getTotalCount(HousePageBean bean) throws SQLException {
 		// TODO Auto-generated method stub

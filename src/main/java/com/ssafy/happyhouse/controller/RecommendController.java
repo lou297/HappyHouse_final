@@ -65,6 +65,9 @@ public class RecommendController {
 				double point = recom.getRecommendPoint() / max * 100;
 				point = (Math.round((100-point)*10)/10.0);
 				recom.setRecommendPoint(point);
+				
+				recom.setHouseNo(houseService.searchNoByDongAptName(recom.getDong(), recom.getAptName()).getNo());
+				
 				result.add(recom);
 			}
 		}
