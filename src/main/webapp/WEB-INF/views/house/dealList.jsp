@@ -247,6 +247,7 @@
 	padding-top : 15px;
     justify-content: center;
 }
+
 </style>
 
 
@@ -257,16 +258,6 @@
 
 			<div align="center">
 				<h2>거래 목록</h2>
-
-				<div style="margin-top: 50px">
-					<select id="sido">
-						<option value="0">시</option>
-					</select> <select id="gugun">
-						<option value="0">구군</option>
-					</select> <select id="dong">
-						<option value="0">동</option>
-					</select>
-				</div>
 
 				<input type="hidden" name="pg" id="pg" value="1"> <input
 					type="hidden" name="group" id="group" value="${group }">
@@ -285,22 +276,21 @@
 
 
 			<div>
-				<button type="button" class="btn btn-primary btn-sm" id="groupall">전체</button>
-				<button type="button" class="btn btn-primary btn-sm" id="groupapt">아파트</button>
-				<button type="button" class="btn btn-primary btn-sm" id="grouphouse">주택</button>
+				<button type="button" class="btn btn-light" id="groupall">전체</button>
+				<button type="button" class="btn btn-light" id="groupapt">아파트</button>
+				<button type="button" class="btn btn-light" id="grouphouse">주택</button>
+				<c:if test="${total ne null}">
+					<span style="color: gray; font-size: 22px; margin-bottom: 0px; float: right; ">
+					total : ${total }</span>
+				</c:if>	
 			</div>
 
-
 			<div id="searchResult">
-				<c:if test="${total ne null}">
-					<p style="color: red; font-size: 22px; margin-bottom: 0px">total
-						: ${total }</p>
-				</c:if>
-
+				
 				<c:forEach var="deal" items="${dealList}">
 
-					<div class="justify-content-center border-top list_form" align="left" style="margin-top: 20px">
-						<a href="${root}/house/detail?no=${deal.no}" style="font-size: 20px;display:inline-block; width:60%; "><b>${deal.aptName }</b></a>
+					<div class="justify-content-center border-top list_form" align="left" style="margin-top: 20px;">
+						<a href="${root}/house/detail?no=${deal.no}" style="font-size: 20px; color:#848484; display:inline-block; width:60%; font: sans-serif;">${deal.aptName }</a>
 						<span style="display:inline-block; width: 150px">
 							거래금액 : ${deal.dealAmount }만원
 						</span>
