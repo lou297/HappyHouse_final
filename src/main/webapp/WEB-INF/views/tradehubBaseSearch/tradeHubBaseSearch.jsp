@@ -45,9 +45,8 @@
 			<div align="center">
 				<h2>상권 접근성</h2>
 
-				<div style="margin-top: 50px">
-				
-					<select	id="category">
+				<div class="col-8">
+					<select	id="category" class="custom-select col-2" style="float : left">
 						<option value="전체" <c:if test="${category eq '전체'}">selected="selected"</c:if>>전체</option>
 						<option value="음식" <c:if test="${category eq '음식'}">selected="selected"</c:if>>음식</option>
 						<option value="생활서비스" <c:if test="${category eq '생활서비스'}">selected="selected"</c:if>>생활서비스</option>
@@ -58,20 +57,22 @@
 						<option value="부동산" <c:if test="${category eq '부동산'}">selected="selected"</c:if>>부동산</option>
 						<option value="숙박" <c:if test="${category eq '숙박'}">selected="selected"</c:if>>숙박</option>
 					</select>
-				</div>
-				
-
-				<div class="form-group input-group col-6">
+					
+					<div id="search_container" class="form-group input-group col-9" style="float : left">
 						<input type="text" class="form-control" id="search" name="search"
 							placeholder="" value="${search}">
 						<div class="input-group-append">
 							<button type="button" class="btn btn-primary" onclick="javascript:search();">검색</button>
 						</div>
 					</div>
+					<div style="clear : both"></div>
 					<c:if test="${recommends eq null}">
-					<p style = "color: red; font-size : 22px; margin-bottom : 0px">지역과 카테고리를 입력해주세요.</p>
-				</c:if>
-			</div>
+						<p style = "color: red; font-size : 22px; margin-bottom : 0px">지역과 카테고리를 입력해주세요.</p>
+					</c:if>
+				</div>
+				
+
+				
 			
 
 
