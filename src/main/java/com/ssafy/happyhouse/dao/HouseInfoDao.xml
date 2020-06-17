@@ -39,7 +39,7 @@
 	
 	<select id="searchHouseInfoList" resultType="HouseInfo">
 		select * from houseinfo
-		where dong like concat('%',#{search},'%') or aptname like concat('%',#{search},'%')
+		where dong like concat('%',#{search},'%')
 	</select>
 </mapper>
 
