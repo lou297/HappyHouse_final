@@ -275,7 +275,7 @@
 
 
 
-			<div>
+			<div style="margin-top: 50px">
 				<button type="button" class="btn btn-light" id="groupall">전체</button>
 				<button type="button" class="btn btn-light" id="groupapt">아파트</button>
 				<button type="button" class="btn btn-light" id="grouphouse">주택</button>

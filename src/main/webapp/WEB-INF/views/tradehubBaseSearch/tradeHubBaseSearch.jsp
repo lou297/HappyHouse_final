@@ -76,19 +76,22 @@
 			
 
 
-			<div id="searchResult">
+			<div id="searchResult" style="margin-top : 50px">
 				
 				
 				<c:if test="${cnt ne null}">
-					<p style = "color: red; font-size : 18px;" align="left">${search}의 (${category }) 상권 ${cnt }개에 대한 접근성 순위</p>
+					<p style = "font-size : 18px;" align="left"><span style = "color: red;">${search}의 (${category }) 상권 ${cnt }개에 대한 접근성 순위</span><span>  점수 : 100 - (해당 아파트의 상권 거리 / 상권 거리가 가장 먼 아파트의 상권 거리) * 100</span></p>
 				</c:if>
 				<c:forEach var="recommend" items="${recommends}" varStatus="status">
-				
-					<div class="justify-content-center border-top list_form" align="left" style="margin-top:20px">
-						<p>
-							<span>${status.count }. ${recommend.dong}</span> 
-							<a href="${root}/house/detail?no=${recommend.houseNo}"  style="font-size:20px"><b>${recommend.aptName }</b></a>
+					
+					<div class="justify-content-center border-bottom list_form" align="left" style="margin-top:20px">
+						<p style="font-size : 20px; padding-left : 50px;">
+							<span style="display:inline-block; width : 500px">
+								<span style="display:inline-block; width : 150px">${status.count }. ${recommend.dong}</span> 
+								<a href="${root}/house/detail?no=${recommend.houseNo}"  style="font-size:20px">${recommend.aptName }</a>
+							</span>
 							<span>${recommend.recommendPoint }점</span>
+							
 						</p>
 						
 					</div>

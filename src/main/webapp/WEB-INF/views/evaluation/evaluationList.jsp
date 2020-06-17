@@ -111,7 +111,7 @@
 			</div>
 			 -->
 			<!-- 본문 -->
-			<div id="searchResult">
+			<div id="searchResult" style="margin-top : 50px">
 				<c:if test="${total ne null}">
 					<p style = "color: gray; font-size : 22px;" align="right">total : ${total }</p>
 				</c:if>
