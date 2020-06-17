@@ -30,6 +30,8 @@ public interface HouseDao {
 //	public List<HouseDeal> searchAll(int currentPage, int sizePerPage, HousePageBean bean) throws SQLException;
 	public List<HouseDeal> searchAll(HashMap<String,Object> map) throws SQLException;
 	
+	public List<HouseDeal> searchNoByDongAptName(HashMap<String,Object> map) throws SQLException;
+	
 	public int getTotalCount(HashMap<String,Object> map) throws SQLException;
 
 	/**
