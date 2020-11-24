@@ -14,8 +14,7 @@
 
 <!-- 구글 차트 -->
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script type="text/javascript"
-	src="http://maps.google.com/maps/api/js?key=AIzaSyCjA0YjA7wIVIwwsqyx8kj3qTbbUuA3ATg&sensor=true"></script>
+
 <script type="text/javascript" src="${root }/resources/js/houseInfo.js"></script>
 
 
